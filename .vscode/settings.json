@@ -16,5 +16,6 @@
 "roo-cline.deniedCommands": [],
 "geminicodeassist.inlineSuggestions.enableAuto": false,
 "liveServer.settings.donotShowInfoMsg": true,
+"liveServer.settings.file": "index.html",
 "liveServer.settings.root": "/public"
 }
