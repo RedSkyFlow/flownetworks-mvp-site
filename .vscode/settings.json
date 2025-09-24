@@ -1,3 +1,20 @@
 {
-    "liveServer.settings.file": "/public."
+"git.openRepositoryInParentFolders": "always",
+"security.workspace.trust.untrustedFiles": "open",
+"roo-cline.allowedCommands": [
+"git log",
+"git diff",
+"git show",
+"npm test",
+"npm install",
+"tsc"
+],
+"git.enableSmartCommit": true,
+"files.autoSave": "afterDelay",
+"geminicodeassist.project": "clean-embassy-870k4",
+"git.autofetch": true,
+"roo-cline.deniedCommands": [],
+"geminicodeassist.inlineSuggestions.enableAuto": false,
+"liveServer.settings.donotShowInfoMsg": true,
+"liveServer.settings.root": "/public."
 }
