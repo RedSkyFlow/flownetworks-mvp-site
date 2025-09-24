@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- FIX: Added charset and viewport for proper rendering and mobile support -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Thank You! | Flow Networks</title>
+    
+    <!-- FIX: Moved inline styles to a style block in the head -->
+    <style>
+        body {
+            background-color: #0A0903;
+            color: #E2FDFF;
+            font-family: 'Inter', sans-serif; /* Using Inter for consistency */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 1rem;
+            margin: 0;
+        }
+        .container {
+            max-width: 450px;
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #FFD700; /* Accent Gold for emphasis */
+        }
+        p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #E2FDFF;
+            margin-top: 1rem;
+        }
+        a {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            background-color: #FFD700;
+            color: #0A0903;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You!</h1>
+        <p>Your message has been successfully sent. Our team will get back to you as soon as possible.</p>
+        
+        <!-- FIX: Replaced automatic meta refresh with a user-initiated link for better accessibility -->
+        <a href="/">Return to Homepage</a>
+    </div>
+</body>
+</html>
