@@ -15,7 +15,7 @@ export default {
 
         // --- Mailrelay API Payload ---
         // Construct the API request for Mailrelay's API
-        const mailrelay_request = new Request(`https://${env.MAILRELAY_HOST}/v2/send`, {
+        const mailrelay_request = new Request(`https://${env.MAILRELAY_HOST}/api/v2/send`, {
           method: 'POST',
           headers: {
             // Mailrelay uses 'X-Auth-Token' for authentication
