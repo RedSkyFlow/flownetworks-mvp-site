@@ -1,4 +1,4 @@
-// public/_worker.js (Updated with Enhanced Error Diagnostics)
+// public/_worker.js (FINAL PRODUCTION VERSION - Corrected API v1 Endpoint)
 
 export default {
   async fetch(request, env, ctx) {
@@ -17,7 +17,10 @@ export default {
         const fromEmail = env.FROM_EMAIL_ADDRESS;
         const fromString = `"${fromName}" <${fromEmail}>`;
 
-        const mailrelay_request = new Request(`https://${env.MAILRELAY_HOST}/api/v2/send`, {
+        // --- FIX START ---
+        // The correct Mailrelay API endpoint is /api/v1/send as per the documentation.
+        const mailrelay_request = new Request(`https://${env.MAILRELAY_HOST}/api/v1/send`, {
+        // --- FIX END ---
           method: 'POST',
           headers: {
             'X-Auth-Token': env.MAILRELAY_API_KEY,
@@ -36,27 +39,13 @@ export default {
         });
 
         const resp = await fetch(mailrelay_request);
-
-        // --- ENHANCED ERROR HANDLING START ---
-        // If the response from Mailrelay is not successful...
         if (!resp.ok) {
-          // Get the raw text of the error response, as it might not be JSON.
-          const errorText = await resp.text();
-          console.error(`Mailrelay API Error: ${resp.status} ${resp.statusText}`, errorText);
-          
-          // Return the ACTUAL error message directly to the browser for debugging.
-          // This will show us exactly what Mailrelay is complaining about.
-          return new Response(
-            `Mailrelay API failed with status ${resp.status}:\n\n${errorText}`, 
-            { 
-              status: 502, // 502 Bad Gateway is an appropriate error here
-              headers: { 'Content-Type': 'text/plain' }
-            }
-          );
+          const errorData = await resp.json();
+          console.error(`Mailrelay error: ${resp.status}`, errorData);
+          return new Response(errorData.error || 'Error sending message.', { status: 500 });
         }
-        // --- ENHANCED ERROR HANDLING END ---
 
-        // If successful, redirect to the thank you page.
+        // Redirect to the thank you page on success
         return Response.redirect(new URL('/thank-you.html', request.url).toString(), 302);
 
       } catch (e) {
@@ -65,7 +54,7 @@ export default {
       }
     }
 
-    // Pass all other requests to the Pages static assets.
+    // Pass all other requests to the Pages static assets
     return env.ASSETS.fetch(request);
   },
 };
