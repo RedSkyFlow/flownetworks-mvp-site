@@ -1,4 +1,4 @@
-// public/_worker.js (FINAL PRODUCTION VERSION - Corrected API v1 Endpoint)
+// public/_worker.js (FINAL PRODUCTION VERSION - Aligned with Official API Docs)
 
 export default {
   async fetch(request, env, ctx) {
@@ -13,29 +13,26 @@ export default {
         const formData = await request.formData();
         const body = Object.fromEntries(formData);
 
-        const fromName = body.Name || 'Flow Networks Website';
-        const fromEmail = env.FROM_EMAIL_ADDRESS;
-        const fromString = `"${fromName}" <${fromEmail}>`;
-
         // --- FIX START ---
-        // The correct Mailrelay API endpoint is /api/v1/send as per the documentation.
-        const mailrelay_request = new Request(`https://${env.MAILRELAY_HOST}/api/v1/send`, {
+        // The entire payload is now structured to match the official Mailrelay API documentation exactly.
+        const mailrelay_payload = {
+          to: [{ email: env.TO_EMAIL_ADDRESS }],
+          from: {
+            name: body.Name || 'Flow Networks Website',
+            email: env.FROM_EMAIL_ADDRESS,
+          },
+          subject: `New Contact Form Submission from ${body.Name || 'flownetworks.ai'}`,
+          text_part: `You have a new message:\n\nName: ${body.Name}\nEmail: ${body.Email}\nVenue Type: ${body["Venue Type"]}\n\nMessage:\n${body.Message}`,
+        };
         // --- FIX END ---
+
+        const mailrelay_request = new Request(`https://${env.MAILRELAY_HOST}/api/v1/send_emails`, {
           method: 'POST',
           headers: {
             'X-Auth-Token': env.MAILRELAY_API_KEY,
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            to: [env.TO_EMAIL_ADDRESS],
-            from: fromString,
-            subject: `New Contact Form Submission from ${body.Name || 'flownetworks.ai'}`,
-            text: `You have a new message:\n\nName: ${body.Name}\nEmail: ${body.Email}\nVenue Type: ${body["Venue Type"]}\n\nMessage:\n${body.Message}`,
-            reply_to: {
-              name: body.Name || 'Form Submission',
-              email: body.Email,
-            }
-          }),
+          body: JSON.stringify(mailrelay_payload),
         });
 
         const resp = await fetch(mailrelay_request);
