@@ -1,4 +1,4 @@
-// public/_worker.js (FINAL PRODUCTION VERSION - Aligned with Official API Docs)
+// public/_worker.js (FINAL PRODUCTION VERSION - Corrected Data Keys)
 
 export default {
   async fetch(request, env, ctx) {
@@ -14,15 +14,21 @@ export default {
         const body = Object.fromEntries(formData);
 
         // --- FIX START ---
-        // The entire payload is now structured to match the official Mailrelay API documentation exactly.
+        // We are now using the exact, lowercase `name` attributes from your HTML form
+        // to construct the email body and other fields.
+        const fromName = body.name || 'Flow Networks Website';
+        const fromEmail = env.FROM_EMAIL_ADDRESS;
+        const fromString = `"${fromName}" <${fromEmail}>`;
+
         const mailrelay_payload = {
           to: [{ email: env.TO_EMAIL_ADDRESS }],
-          from: {
-            name: body.Name || 'Flow Networks Website',
-            email: env.FROM_EMAIL_ADDRESS,
-          },
-          subject: `New Contact Form Submission from ${body.Name || 'flownetworks.ai'}`,
-          text_part: `You have a new message:\n\nName: ${body.Name}\nEmail: ${body.Email}\nVenue Type: ${body["Venue Type"]}\n\nMessage:\n${body.Message}`,
+          from: fromString,
+          subject: `New Contact Form Submission from ${body.name || 'flownetworks.ai'}`,
+          text_part: `You have a new message:\n\nName: ${body.name}\nEmail: ${body.email}\nVenue Type: ${body["venue-type"]}\n\nMessage:\n${body.message}`,
+          reply_to: {
+            name: body.name || 'Form Submission',
+            email: body.email,
+          }
         };
         // --- FIX END ---
 
