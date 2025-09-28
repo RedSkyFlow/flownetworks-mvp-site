@@ -1,20 +1,62 @@
-// public/_worker.js (DIAGNOSTIC VERSION - CORRECTED SYNTAX)
+// public/_worker.js (FINAL PRODUCTION VERSION - Corrected 'from' field)
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // Check if the request is for our API endpoint
     if (url.pathname === '/api/contact') {
-      
-      // This is our test. We will try to read the MAILRELAY_HOST variable
-      // and return it directly to the browser.
-      const hostValue = env.MAILRELAY_HOST;
+      if (request.method !== 'POST') {
+        return new Response('Method Not Allowed', { status: 405 });
+      }
 
-      // Return a plain text response showing the value.
-      return new Response(`Host: ${hostValue}`, {
-        headers: { 'Content-Type': 'text/plain' },
-      });
+      try {
+        const formData = await request.formData();
+        const body = Object.fromEntries(formData);
+
+        // --- FIX START ---
+        // The Mailrelay API expects the 'from' field to be a single string in the
+        // format "Sender Name <email@example.com>". We will construct this string now.
+        const fromName = body.Name || 'Flow Networks Website';
+        const fromEmail = env.FROM_EMAIL_ADDRESS;
+        const fromString = `"${fromName}" <${fromEmail}>`;
+        // --- FIX END ---
+
+        const mailrelay_request = new Request(`https://${env.MAILRELAY_HOST}/api/v2/send`, {
+          method: 'POST',
+          headers: {
+            'X-Auth-Token': env.MAILRELAY_API_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            to: [env.TO_EMAIL_ADDRESS],
+            // --- FIX START ---
+            // Use the correctly formatted string here.
+            from: fromString,
+            // --- FIX END ---
+            subject: `New Contact Form Submission from ${body.Name || 'flownetworks.ai'}`,
+            text: `You have a new message:\n\nName: ${body.Name}\nEmail: ${body.Email}\nVenue Type: ${body["Venue Type"]}\n\nMessage:\n${body.Message}`,
+            // We should also use the sender's email as the reply-to address
+            reply_to: {
+              name: body.Name || 'Form Submission',
+              email: body.Email,
+            }
+          }),
+        });
+
+        const resp = await fetch(mailrelay_request);
+        if (!resp.ok) {
+          const errorData = await resp.json();
+          console.error(`Mailrelay error: ${resp.status}`, errorData);
+          return new Response(errorData.error || 'Error sending message.', { status: 500 });
+        }
+
+        // Redirect to the thank you page on success
+        return Response.redirect(new URL('/thank-you.html', request.url).toString(), 302);
+
+      } catch (e) {
+        console.error('Worker Error:', e);
+        return new Response('An unexpected error occurred.', { status: 500 });
+      }
     }
 
     // Pass all other requests to the Pages static assets
