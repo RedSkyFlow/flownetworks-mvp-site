@@ -1,4 +1,4 @@
-// public/_worker.js (DIAGNOSTIC VERSION)
+// public/_worker.js (DIAGNOSTIC VERSION - CORRECTED SYNTAX)
 
 export default {
   async fetch(request, env, ctx) {
@@ -20,4 +20,4 @@ export default {
     // Pass all other requests to the Pages static assets
     return env.ASSETS.fetch(request);
   },
-};`
+};
