@@ -1,66 +1,23 @@
-// // public/_worker.js (Updated with Enhanced Error Diagnostics)
+// public/_worker.js (DIAGNOSTIC VERSION)
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
+    // Check if the request is for our API endpoint
     if (url.pathname === '/api/contact') {
-      if (request.method !== 'POST') {
-        return new Response('Method Not Allowed', { status: 405 });
-      }
+      
+      // This is our test. We will try to read the MAILRELAY_HOST variable
+      // and return it directly to the browser.
+      const hostValue = env.MAILRELAY_HOST;
 
-      try {
-        const formData = await request.formData();
-        const body = Object.fromEntries(formData);
-
-        const mailrelay_request = new Request(`https://${env.MAILRELAY_HOST}/api/v2/send`, {
-          method: 'POST',
-          headers: {
-            'X-Auth-Token': env.MAILRELAY_API_KEY,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            to: [env.TO_EMAIL_ADDRESS],
-            from: {
-              name: body.Name || 'Flow Networks Website',
-              email: env.FROM_EMAIL_ADDRESS,
-            },
-            subject: `New Contact Form Submission from ${body.Name || 'flownetworks.ai'}`,
-            text: `You have a new message:\n\nName: ${body.Name}\nEmail: ${body.Email}\nVenue Type: ${body["Venue Type"]}\n\nMessage:\n${body.Message}`,
-          }),
-        });
-
-        const resp = await fetch(mailrelay_request);
-
-        // --- ENHANCED ERROR HANDLING START ---
-        // If the response from Mailrelay is not successful...
-        if (!resp.ok) {
-          // Get the raw text of the error response, as it might not be JSON.
-          const errorText = await resp.text();
-          console.error(`Mailrelay API Error: ${resp.status} ${resp.statusText}`, errorText);
-          
-          // Return the ACTUAL error message directly to the browser for debugging.
-          // This will show us exactly what Mailrelay is complaining about.
-          return new Response(
-            `Mailrelay API failed with status ${resp.status}:\n\n${errorText}`, 
-            { 
-              status: 502, // 502 Bad Gateway is an appropriate error here
-              headers: { 'Content-Type': 'text/plain' }
-            }
-          );
-        }
-        // --- ENHANCED ERROR HANDLING END ---
-
-        // If successful, redirect to the thank you page.
-        return Response.redirect(new URL('/thank-you.html', request.url).toString(), 302);
-
-      } catch (e) {
-        console.error('Worker Error:', e);
-        return new Response('An unexpected error occurred.', { status: 500 });
-      }
+      // Return a plain text response showing the value.
+      return new Response(`Host: ${hostValue}`, {
+        headers: { 'Content-Type': 'text/plain' },
+      });
     }
 
-    // Pass all other requests to the Pages static assets.
+    // Pass all other requests to the Pages static assets
     return env.ASSETS.fetch(request);
   },
-};
+};`
