@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manhattan Hotel | Purple WiFi Onboarding Roadmap</title>
+    <meta name="robots" content="noindex, nofollow">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Flow Brand Palette - Dark Mode Implementation */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0A0903; /* Background Dark Primary */
+            color: #E2FDFF; /* Text Light */
+        }
+        .step-connector {
+            flex-grow: 1;
+            height: 2px;
+            background-color: #007A80; /* Flow Primary Teal */
+            margin: 0 1rem;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            background-color: #0F0E08; /* Background Dark Secondary */
+            border: 1px solid #2D2C27; /* Detail Dark */
+        }
+        .primary-cta {
+            background-color: #0282F2; /* Flow Action Blue */
+            color: #E2FDFF; /* Text Light */
+        }
+        .secondary-cta {
+             background-color: #F46036; /* Flow Impact Orange */
+             color: #E2FDFF; /* Text Light */
+        }
+        .primary-heading {
+            color: #007A80; /* Flow Primary Teal */
+        }
+        .accent-heading {
+             color: #D4AF37; /* Flow Accent Gold */
+        }
+        .link {
+            color: #0282F2; /* Flow Action Blue */
+        }
+		
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        
+        <!-- Header Section -->
+        <div class="card rounded-xl p-8 mb-12 [#007A80]">
+            <!-- Logos Section -->
+            <div class="flex justify-center items-center space-x-8 md:space-x-12 mb-8">
+                <img 
+                    src="https://static.wixstatic.com/media/c5fefe_9d3692cfd79f4d80807472e7095eb6ac~mv2.png" 
+                    alt="Manhattan Hotel Logo" 
+                    class="h-12 w-auto"
+                    onerror="this.onerror=null; this.src='https://placehold.co/300x100/FFFFFF/073B4C?text=Manhattan+Hotel';"
+                >
+                <img 
+                    src="https://cdn.prod.website-files.com/67e7ca9b46320af3512c94bb/67e7ca9b46320af3512c950d_purple-logo-white-v2.svg" 
+                    alt="Purple WiFi Logo" 
+                    class="h-12 w-auto"
+                    onerror="this.onerror=null; this.src='https://placehold.co/300x100/FFFFFF/6A448A?text=Purple';"
+                >
+                <img 
+                    src="https://static.wixstatic.com/media/c5fefe_efb33914c9544af8912b7ba98a79facf~mv2.png" 
+                    alt="Flow Logo" 
+                    class="h-12 w-auto"
+                    onerror="this.onerror=null; this.src='https://placehold.co/300x100/FFFFFF/06D6A0?text=Flow';"
+                >
+            </div>
+
+            <header class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold accent-heading">Manhattan Hotel & Purple WiFi</h1>
+                <p class="text-xl text-gray-400 mt-2">A Strategic Onboarding Roadmap</p>
+            </header>
+        </div>
+
+        <!-- Onboarding Toolkit Section -->
+        <section id="toolkit" class="mb-12">
+            <div class="card rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold primary-heading mb-4">Phase 1: Strategy & Asset Collection</h2>
+                <p class="text-gray-300 mb-8 max-w-4xl">This foundational phase is about gathering all necessary information. Use the toolkit below to submit your content and configuration details.</p>
+                
+                <div class="bg-[#0A0903] border-l-4 border-[#D4AF37] rounded-r-lg p-6 mb-8">
+                    <h3 class="text-2xl font-bold accent-heading mb-4">Onboarding Toolkit</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Form 1 Button -->
+                        <div class="card p-6 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-lg mb-2 text-gray-200">Form 1: Project Kick-Off</h4>
+                            <p class="text-gray-400 text-sm mb-4">Start here. Use this form to submit key project contacts and confirm your primary objectives.</p>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7h7BCxQKUIDF8guMq2jkhtmSEQgxWXutzBiQktbK6Zkaaeg/viewform?usp=sharing&ouid=102183900416331293948" target="_blank" class="inline-block primary-cta font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                                Start Kick-Off Form →
+                            </a>
+                        </div>
+                        <!-- Form 4 Button -->
+                        <div class="card p-6 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-lg mb-2 text-gray-200">Form 4: Guest Journey & Branding</h4>
+                             <p class="text-gray-400 text-sm mb-4">For the Marketing team. Submit all branding, splash page content, and guest login details.</p>
+                            <a href="https://forms.gle/8E6PPXpDaVJeqM2E6" target="_blank" class="inline-block primary-cta font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                                Start Branding Form →
+                            </a>
+                        </div>
+                        <!-- Users Template -->
+                        <div class="card p-6 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-lg mb-2 text-gray-200">Portal Users Template</h4>
+                             <p class="text-gray-400 text-sm mb-4">Download this template to provide the list of staff who need access to the Purple Portal and their permission levels.</p>
+                            <a href="https://drive.google.com/file/d/17GZS2xmGJwzg_uSMPAWo0ObZxpCQiNXo/view?usp=sharing" target="_blank" class="inline-block secondary-cta font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                                Download Users Template 📥
+                            </a>
+                        </div>
+                        <!-- Groups & Venues Template -->
+                        <div class="card p-6 rounded-lg shadow-sm">
+                             <h4 class="font-bold text-lg mb-2 text-gray-200">Groups & Venues Template</h4>
+                             <p class="text-gray-400 text-sm mb-4">Download this template to define the structure of your portal, from high-level groups to specific venues.</p>
+                            <a href="https://drive.google.com/file/d/1P08yUMvlxBVKL9Q7dZPuo5Vsy-2WuSb8/view?usp=sharing" target="_blank" class="inline-block secondary-cta font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                                Download Venues Template 📥
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-xl mb-4 mt-10">Visual Asset Dimensions</h3>
+                <p class="text-gray-300 mb-4">Using correctly sized images ensures a crisp, professional appearance on all devices. All assets can be uploaded via the Branding Form.</p>
+                <div class="chart-container" style="height: 400px;">
+                    <canvas id="imageSizesChart"></canvas>
+                </div>
+                <a href="https://support.purple.ai/hc/en-gb/articles/7330834185757-Splash-Page-Builder-Standard" target="_blank" class="inline-block mt-4 link font-semibold hover:underline">Learn More about the Splash Page Builder →</a>
+            </div>
+        </section>
+
+        <!-- Main Flowchart -->
+        <div class="w-full mx-auto my-20 hidden md:flex items-start justify-between">
+             <div class="flex flex-col items-center text-center w-48 opacity-25">
+                <div class="w-24 h-24 rounded-full bg-[#2D2C27] text-gray-500 flex items-center justify-center text-3xl font-bold mb-2">1</div>
+                <p class="font-semibold leading-tight text-gray-500">Strategy &<br>Asset Collection</p>
+            </div>
+            <div class="step-connector mt-12"></div>
+            <div class="flex flex-col items-center text-center w-48">
+                <div class="w-24 h-24 rounded-full bg-[#007A80] text-white flex items-center justify-center text-3xl font-bold mb-2">2</div>
+                <p class="font-semibold leading-tight text-gray-300">Technical<br>Foundation</p>
+            </div>
+            <div class="step-connector mt-12"></div>
+            <div class="flex flex-col items-center text-center w-48">
+                <div class="w-24 h-24 rounded-full bg-[#0282F2] text-white flex items-center justify-center text-3xl font-bold mb-2">3</div>
+                <p class="font-semibold leading-tight text-gray-300">Guest Journey<br>Design</p>
+            </div>
+            <div class="step-connector mt-12"></div>
+            <div class="flex flex-col items-center text-center w-48">
+                <div class="w-24 h-24 rounded-full bg-[#F46036] text-white flex items-center justify-center text-3xl font-bold mb-2">4</div>
+                <p class="font-semibold leading-tight text-gray-300">Analytics &<br>Management</p>
+            </div>
+             <div class="step-connector mt-12"></div>
+            <div class="flex flex-col items-center text-center w-48">
+                <div class="w-24 h-24 rounded-full bg-[#D4AF37] text-[#0A0903] flex items-center justify-center text-3xl font-bold mb-2">🚀</div>
+                <p class="font-semibold leading-tight text-gray-300">Go-Live &<br>Trial Activation</p>
+            </div>
+        </div>
+
+
+        <!-- Phase 2: Technical Foundation -->
+        <section id="phase2" class="mb-12">
+            <div class="card rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold primary-heading mb-4">Phase 2: Technical Foundation</h2>
+                <p class="text-gray-300 mb-8 max-w-4xl">Here, we configure the core technical components based on the information provided in your templates. This involves setting up your portal structure and integrating your Unifi network.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="md:col-span-2 bg-[#0A0903] p-6 rounded-lg border-l-4 border-[#007A80]">
+                        <h3 class="font-bold text-xl mb-4 text-gray-200">Step 2.1: Portal Structure Setup</h3>
+                        <p class="mb-4 text-gray-400">Using the details from your "Groups & Venues" template, we will configure the portal with the following hierarchy for granular control and reporting:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
+                            <div>
+                                <strong class="block text-base accent-heading">Main Account:</strong>
+                                <ul class="list-disc list-inside mt-1 text-gray-300"><li>Manhattan Hotel</li></ul>
+                            </div>
+                            <div>
+                                <strong class="block text-base accent-heading">Groups:</strong>
+                                <ul class="list-disc list-inside mt-1 text-gray-300">
+                                    <li>Public Areas</li>
+                                    <li>Restaurants & Bars</li>
+                                    <li>Guest Rooms</li>
+                                    <li>Conference Rooms</li>
+                                    <li>Admin & BoH</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong class="block text-base accent-heading">Venues:</strong>
+                                <ul class="list-disc list-inside mt-1 text-gray-300">
+                                    <li>Lobby & Reception</li>
+                                    <li>Restaurant & Spa</li>
+                                    <li>Conference Rooms 1-3</li>
+                                    <li>Guest Floors 1-10</li>
+                                    <li>Admin Offices</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 bg-[#0A0903] p-6 rounded-lg border-l-4 border-[#007A80]">
+                        <h3 class="font-bold text-xl mb-2 text-gray-200">Step 2.2: Unifi Hardware Integration</h3>
+                        <p class="text-gray-400">We will liaise directly with your IT provider to connect your Unifi Access Points. This involves simple configuration changes on the Unifi controller, with no physical hardware changes needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 3: Guest Journey Design -->
+        <section id="phase3" class="mb-12">
+            <div class="card rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#0282F2] mb-4">Phase 3: Crafting the Guest Journey</h2>
+                <p class="text-gray-300 mb-8 max-w-4xl">We will design the entire visual and interactive journey for your guests, incorporating a strategic mix of login methods to balance convenience with valuable data capture.</p>
+                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                    <div class="lg:col-span-3 bg-[#0A0903] p-6 rounded-lg border-l-4 border-[#0282F2]">
+                        <h3 class="font-bold text-xl mb-4 text-gray-200">Guest & Staff Login Options</h3>
+                        <p class="mb-4 text-gray-400">We will enable the following login methods, each serving a distinct purpose:</p>
+                        <ul class="list-disc list-inside space-y-3 text-gray-300">
+                            <li><strong>Registration Form:</strong> The primary method for capturing high-quality, opt-in guest data like names and email addresses for marketing.</li>
+                            <li><strong>Facebook:</strong> A popular, low-friction option for guests that provides valuable demographic insights.</li>
+                            <li><strong>LinkedIn:</strong> An ideal choice for conference and business guests, offering professional network data.</li>
+                             <li><strong>X (Twitter):</strong> Provides another quick social login option for guests.</li>
+                            <li><strong>Sponsored WiFi:</strong> Allows temporary, branded access for conferences or events, creating a revenue opportunity.</li>
+                             <li><strong>SAML/Staff Login:</strong> A secure method for employees to access a separate staff network using their company credentials (configured in Phase 4).</li>
+                        </ul>
+                         <a href="https://support.purple.ai/hc/en-gb/articles/7330855696413-Social-Media-Authentication" target="_blank" class="inline-block mt-4 link font-semibold hover:underline">Learn More about Login Options →</a>
+                    </div>
+                     <div class="lg:col-span-2 bg-[#0A0903] p-6 rounded-lg border-l-4 border-[#0282F2]">
+                        <h3 class="font-bold text-xl mb-4 text-gray-200">Proposed Guest Login Mix</h3>
+                         <div class="chart-container">
+                            <canvas id="accessMethodsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 4: Analytics & Management -->
+        <section id="phase4" class="mb-12">
+            <div class="card rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#F46036] mb-4">Phase 4: Analytics & Management</h2>
+                <p class="text-gray-300 mb-8 max-w-4xl">This phase unlocks powerful analytics and management tools. We will create user accounts based on your template and configure the separate, secure network for internal use.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-[#0A0903] p-6 rounded-lg border-l-4 border-[#F46036]">
+                        <h3 class="font-bold text-xl mb-4 text-gray-200">User Roles & Permissions</h3>
+                        <p class="mb-6 text-gray-400">Using the "Portal Users" template, we will create individual accounts for your team with the specified roles.</p>
+                        <div class="w-full max-w-xs mx-auto text-center text-[#E2FDFF] font-semibold">
+                           <div class="bg-[#007A80] py-3" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);">Admin</div>
+                           <div class="bg-[#0282F2] py-3 w-[80%] mx-auto" style="margin-top: -1px; clip-path: polygon(12.5% 0, 87.5% 0, 80% 100%, 20% 100%);">Venue Manager</div>
+                           <div class="bg-[#F46036] py-3 w-[60%] mx-auto" style="margin-top: -1px; clip-path: polygon(16.67% 0, 83.33% 0, 75% 100%, 25% 100%);">Read-Only</div>
+                        </div>
+                         <p class="text-sm text-center mt-4 text-gray-400"><strong>Admin:</strong> Full access (GM).<br><strong>Manager:</strong> Manages venue, views analytics (Marketing).<br><strong>Read-Only:</strong> Views analytics only (Sales).</p>
+                         <a href="https://support.purple.ai/hc/en-gb/articles/7330854881053-Users" target="_blank" class="block text-center mt-4 link font-semibold hover:underline">Learn More about User Permissions →</a>
+                    </div>
+                    <div class="bg-[#0A0903] p-6 rounded-lg border-l-4 border-[#F46036]">
+                        <h3 class="font-bold text-xl mb-4 text-gray-200">Secure Staff WiFi (SAML)</h3>
+                        <p class="text-gray-400">We will configure a separate, secure WiFi network (SSID) exclusively for staff. Using SAML authentication, employees can log in with their existing company credentials. This keeps internal traffic separate from the guest network, enhancing security and providing a better experience for everyone.</p>
+                         <a href="https://support.purple.ai/hc/en-gb/articles/7330787276445-SAML-Staff-WiFi" target="_blank" class="inline-block mt-2 link font-semibold hover:underline">Learn More about Staff WiFi (SAML) →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 5: Go-Live -->
+        <section id="phase5" class="text-center mb-8">
+             <div class="card rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold accent-heading mb-4">Phase 5: Go-Live & Trial Activation</h2>
+                <p class="text-gray-300 max-w-3xl mx-auto mb-6">After final testing and approval, we will activate the service. Your one-month, no-obligation trial of the Purple WiFi 'Capture' license begins on this date, unlocking the full potential of your guest WiFi.</p>
+                <div class="bg-[#D4AF37] text-[#0A0903] rounded-lg p-8 inline-block">
+                    <p class="text-lg uppercase tracking-widest font-semibold">Target Go-Live Date</p>
+                    <p class="text-5xl md:text-6xl font-bold">October 15th</p>
+                    <p class="text-lg font-semibold">One-Month Trial Commences</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const chartTextColor = '#E2FDFF';
+        const sharedChartOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: chartTextColor,
+                        padding: 20,
+                        font: {
+                            family: "'Inter', sans-serif",
+                            size: 12
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+
+        const ctxImages = document.getElementById('imageSizesChart').getContext('2d');
+        new Chart(ctxImages, {
+            type: 'bar',
+            data: {
+                labels: [['Company', 'Logo'], ['Venue', 'Logo'], 'Background', ['Splash', 'Banner Ad']],
+                datasets: [{
+                    label: 'Width (px)',
+                    data: [220, 128, 1920, 468],
+                    backgroundColor: ['#007A80', '#0282F2', '#FFCB47', '#F46036'],
+                    borderWidth: 0,
+                    borderRadius: 4
+                },
+                {
+                    label: 'Height (px)',
+                    data: [80, 128, 1080, 60],
+                    backgroundColor: ['rgba(0, 122, 128, 0.5)', 'rgba(2, 130, 242, 0.5)', 'rgba(255, 203, 71, 0.5)', 'rgba(244, 96, 54, 0.5)'],
+                     borderWidth: 0,
+                     borderRadius: 4
+                }
+                ]
+            },
+            options: { ...sharedChartOptions,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: chartTextColor },
+                        grid: { color: '#2D2C27' }
+                    },
+                    x: {
+                        ticks: { color: chartTextColor },
+                        grid: { color: '#2D2C27' }
+                    }
+                },
+                maintainAspectRatio: false
+            }
+        });
+
+        const ctxAccess = document.getElementById('accessMethodsChart').getContext('2d');
+        new Chart(ctxAccess, {
+            type: 'doughnut',
+            data: {
+                labels: [['Registration', 'Form'], 'Facebook', 'LinkedIn', ['X', '(Twitter)'], 'Sponsored'],
+                datasets: [{
+                    label: 'Login Method',
+                    data: [40, 25, 15, 10, 10],
+                    backgroundColor: ['#D4AF37', '#007A80', '#0282F2', '#F46036', '#FFCB47'],
+                    hoverOffset: 8,
+                    borderColor: '#0F0E08',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                cutout: '60%',
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+</html>
