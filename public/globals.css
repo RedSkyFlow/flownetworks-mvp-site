@@ -1,0 +1,39 @@
+/* === Flow Networks: globals.css === */
+/* Defines the core design system based on complete_design_guide.md */
+
+:root {
+  /* CORRECTED Color Palette (HSL Variables) */
+  --primary-hsl: 182 100% 25%; /* Teal for borders, glows */
+  --secondary-hsl: 212 98% 48%; /* Blue for main CTAs */
+  --accent-hsl: 51 100% 50%; /* Yellow for icons, highlights */
+  --background-hsl: 47 50% 4%; /* Dark Background */
+  --foreground-hsl: 182 100% 94%; /* Light Text */
+  --card-hsl: 182 15% 15%; /* Base for glass cards */
+
+  /* CSS Variables from HSL */
+  --primary: hsl(var(--primary-hsl));
+  --secondary: hsl(var(--secondary-hsl));
+  --accent: hsl(var(--accent-hsl));
+  --background: hsl(var(--background-hsl));
+  --foreground: hsl(var(--foreground-hsl));
+  --card: hsl(var(--card-hsl));
+
+  /* Transitions & Easing */
+  --transition-fast: 200ms;
+  --transition-standard: 400ms;
+  --ease-gentle: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Glow Effects */
+  --glow-primary: 0 0 15px 0px hsla(var(--primary-hsl), 0.6);
+  --glow-secondary: 0 0 20px 0px hsla(var(--secondary-hsl), 0.7);
+  --glow-accent: 0 0 18px 0px hsla(var(--accent-hsl), 0.8);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif; /* Assuming Inter, a clean sans-serif font */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
