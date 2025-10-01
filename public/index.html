@@ -3,69 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Flow Networks | Intelligent Venues Powered by AI</title>
-    <meta name="description" content="Flow Networks transforms your venue's WiFi into a powerful AI Gateway to understand customers, optimize operations, and drive revenue.">
-    
-    <link rel="stylesheet" href="globals.css">
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Flow Networks - AI Gateway for Physical Venues</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/Flow_Favicon_AI_2025.ico" type="image/x-icon">
 </head>
 <body>
 
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo-link">
+                <img src="images/Flow_logo_2D.png" alt="Flow Networks Logo" class="logo">
+            </a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <main>
-        <section id="hero" class="container">
-            <h1>Your Venue, Now with Intelligence.</h1>
-            <p class="sub-headline">We transform your guest WiFi into a powerful AI Gateway to understand customers, optimize operations, and drive revenue.</p>
-            <a href="#cta" class="btn btn-secondary">Book a Free Demo</a>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h1>The AI Gateway for Physical Venues</h1>
+                <p>Unlock actionable insights, automate marketing, and personalize guest experiences.</p>
+                <a href="#contact" class="cta-button">Request a Demo</a>
+            </div>
         </section>
 
-        <section id="problem" class="container">
-            <h2>Are You Flying Blind?</h2>
-            <div class="problem-grid">
-                <div class="problem-item">
-                    <i class="fas fa-users-slash"></i> <h3>Lost Customers</h3>
-                    <p>You don't know why visitors leave or don't return.</p>
-                </div>
-                <div class="problem-item">
-                    <i class="fas fa-cogs"></i> <h3>Inefficient Operations</h3>
-                    <p>Staffing and layout are based on guesswork, not data.</p>
-                </div>
-                <div class="problem-item">
-                    <i class="fas fa-bullhorn"></i> <h3>Generic Marketing</h3>
-                    <p>Your marketing efforts are one-size-fits-all and ineffective.</p>
+        <section id="about" class="content-section">
+            <div class="container">
+                <h2>Who We Are</h2>
+                <p>Flow Networks is the strategic partner for physical venues ready to leverage the power of artificial intelligence. We build the bridge between your physical space and the digital tools that drive growth, efficiency, and customer loyalty.</p>
+            </div>
+        </section>
+
+        <section id="services" class="content-section bg-light">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Guest Analytics</h3>
+                        <p>Transform your guest WiFi into a powerful data collection tool. Understand visitor demographics, dwell times, and foot traffic patterns in real-time.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>AI-Powered Marketing</h3>
+                        <p>Engage your visitors with automated, personalized marketing campaigns triggered by their on-site behavior. From welcome emails to loyalty offers, we connect with your customers at the right moment.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Predictive Operations</h3>
+                        <p>Leverage AI to forecast peak hours, optimize staffing levels, and manage resources efficiently, reducing costs and improving service quality.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="explorer" class="container">
-            <h2>How It Works For You</h2>
-            <div class="explorer-controls">
-                <select id="industry-selector">
-                    <option value="hotel">Hotel & Hospitality</option>
-                    <option value="restaurant">Restaurant & Cafe</option>
-                    <option value="mall">Shopping Mall</option>
-                </select>
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Let's Connect</h2>
+                <p>Discover how Flow Networks can transform your venue. Fill out the form below to schedule a call with one of our specialists.</p>
+                <form action="/api/contact" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="venue-type">Venue Type</label>
+                        <select id="venue-type" name="venue-type">
+                            <option value="Restaurant">Restaurant</option>
+                            <option value="Retail">Retail Store</option>
+                            <option value="Hotel">Hotel</option>
+                            <option value="Airport">Airport</option>
+                            <option value="Stadium">Stadium / Event Space</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
             </div>
-            <div id="explorer-content" class="glass-card">
-                </div>
         </section>
-
-        <section id="friendly-wifi" class="container">
-             <h2>Intelligence Begins with Trust</h2>
-             <div class="glass-card">
-                <img src="https://path-to-your/friendly-wifi-logo.png" alt="Friendly WiFi Certified">
-                <h3>Exclusive South African Partner</h3>
-                <p>As the sole Approved Partner for Friendly WiFi in South Africa, we bundle this globally-recognized certification at no additional cost. We provide a safe, family-friendly browsing experience that protects your customers and your brand.</p>
-             </div>
-        </section>
-
     </main>
-    
-    <script src="script.js"></script>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Flow Networks. All Rights Reserved.</p>
+            </div>
+    </footer>
 
 </body>
 </html>
