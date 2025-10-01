@@ -1,72 +1,83 @@
-// public/_worker.js (FINAL PRODUCTION VERSION - Aligned with Official API Docs)
+// public/_worker.js (CORRECTED AND OPTIMIZED by Cody)
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    if (url.pathname === '/api/contact') {
-      if (request.method !== 'POST') {
-        return new Response('Method Not Allowed', { status: 405 });
-      }
-
+    // Ensure we only process POST requests to our contact API endpoint
+    if (url.pathname === '/api/contact' && request.method === 'POST') {
+      
       try {
         const formData = await request.formData();
         const body = Object.fromEntries(formData);
 
-        // --- FIX START ---
-        // The entire payload is now structured to match the official Mailrelay API documentation exactly.
+        // --- FIX: Re-architected the payload for Mailrelay API ---
+        // This structure now precisely matches the official Mailrelay documentation.
         const mailrelay_payload = {
           to: [
             {
-              email: env.TO_EMAIL_ADDRESS,
-              name: 'Flow Networks Admin' // Add a name as required by the docs
+              email: env.TO_EMAIL_ADDRESS, // Your destination email from Cloudflare secrets
+              name: 'Flow Networks Admin'
             }
           ],
           from: {
-            name: body.name || 'Flow Networks Website',
-            email: env.FROM_EMAIL_ADDRESS,
+            name: body.name || 'Flow Networks Website', // Use sender's name or a default
+            email: env.FROM_EMAIL_ADDRESS, // Your sending email from Cloudflare secrets
           },
           subject: `New Contact Form Submission from ${body.name || 'flownetworks.ai'}`,
-          // Provide both text and a simple HTML version for compatibility
-          text_part: `You have a new message:\n\nName: ${body.name}\nEmail: ${body.email}\nVenue Type: ${body["venue-type"]}\n\nMessage:\n${body.message}`,
-          html_part: `<p>You have a new message:</p>
-                      <ul>
-                        <li><strong>Name:</strong> ${body.name}</li>
-                        <li><strong>Email:</strong> ${body.email}</li>
-                        <li><strong>Venue Type:</strong> ${body["venue-type"]}</li>
-                      </ul>
-                      <p><strong>Message:</strong></p>
-                      <p>${body.message}</p>`,
+          // Providing both HTML and text parts for maximum email client compatibility.
+          html_part: `
+            <p>You have a new message:</p>
+            <ul>
+              <li><strong>Name:</strong> ${body.name || 'Not provided'}</li>
+              <li><strong>Email:</strong> ${body.email || 'Not provided'}</li>
+              <li><strong>Venue Type:</strong> ${body["venue-type"] || 'Not provided'}</li>
+            </ul>
+            <p><strong>Message:</strong></p>
+            <p>${body.message || 'Not provided'}</p>
+          `,
+          text_part: `
+            You have a new message:\n
+            Name: ${body.name || 'Not provided'}\n
+            Email: ${body.email || 'Not provided'}\n
+            Venue Type: ${body["venue-type"] || 'Not provided'}\n
+            Message:\n${body.message || 'Not provided'}
+          `
         };
-        // --- FIX END ---
+        // --- END FIX ---
 
-        // Use the correct endpoint: /api/v1/send_emails
+        // Construct the request to the official Mailrelay API endpoint
         const mailrelay_request = new Request(`https://${env.MAILRELAY_HOST}/api/v1/send_emails`, {
           method: 'POST',
           headers: {
-            'x-auth-token': env.MAILRELAY_API_KEY, // Match lowercase header from docs
+            'x-auth-token': env.MAILRELAY_API_KEY, // Using the correct header name
             'content-type': 'application/json',
           },
           body: JSON.stringify(mailrelay_payload),
         });
 
-        const resp = await fetch(mailrelay_request);
-        if (!resp.ok) {
-          const errorData = await resp.json();
-          console.error(`Mailrelay error: ${resp.status}`, errorData);
-          return new Response(errorData.error || 'Error sending message.', { status: 500 });
+        const response = await fetch(mailrelay_request);
+
+        // Robust error handling
+        if (!response.ok) {
+          const errorData = await response.json();
+          // Log the specific error for our own debugging
+          console.error(`Mailrelay API Error: ${response.status}`, errorData);
+          // Return a generic but helpful error to the user
+          return new Response('There was an issue sending your message. Please try again later.', { status: 500 });
         }
 
-        // Redirect to the thank you page on success
-        return Response.redirect(new URL('/thank-you.html', request.url).toString(), 302);
+        // On success, redirect to our thank-you page
+        const thankYouUrl = new URL('/thank-you.html', request.url).toString();
+        return Response.redirect(thankYouUrl, 302);
 
       } catch (e) {
-        console.error('Worker Error:', e);
-        return new Response('An unexpected error occurred.', { status: 500 });
+        console.error('Cloudflare Worker Error:', e);
+        return new Response('An unexpected server error occurred.', { status: 500 });
       }
     }
 
-    // Pass all other requests to the Pages static assets
+    // For any other request, serve the static assets from the Pages deployment.
     return env.ASSETS.fetch(request);
   },
 };
