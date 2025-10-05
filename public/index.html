@@ -1,485 +1,115 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Flow Networks | The AI Gateway for Intelligent Venues</title>
-    <meta name="description" content="Stop guessing. We turn your venue's WiFi into an AI Gateway that unifies your data, reveals actionable intelligence, and drives revenue by understanding and engaging every visitor.">
-    <meta name="author" content="Flow Networks">
-    <meta name="keywords" content="AI Gateway, Intelligent WiFi, Smart Venues, Venue Intelligence, Guest WiFi, WiFi Analytics, First-Party Data, Customer Engagement, Operational Efficiency">
-    
-    <link rel="icon" href="/images/logos/logo-2d-gold.png">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --dark-primary: #0A0903;
-            --dark-secondary: #0F0E08;
-            --brand-teal: #007A80;
-            --action-blue: #0282F2;
-            --accent-gold: #FFD700;
-            --text-light: #E2FDFF;
-        }
-
-        body {
-            background-color: var(--dark-primary);
-            color: var(--text-light);
-            font-family: 'Roboto', sans-serif;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .text-gradient-animated {
-            background: linear-gradient(90deg, var(--brand-teal), var(--action-blue), var(--accent-gold), var(--brand-teal));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-animation 5s ease infinite;
-        }
-
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .glass-card {
-            background: rgba(15, 14, 8, 0.6);
-            border: 1px solid rgba(0, 122, 128, 0.2);
-            transition: all 0.3s ease;
-            -webkit-backdrop-filter: blur(12px);
-            backdrop-filter: blur(12px);
-        }
-
-        .hover-glow-primary:hover {
-            box-shadow: 0 0 15px rgba(0, 122, 128, 0.5), 0 0 30px rgba(0, 122, 128, 0.3);
-            border-color: rgba(0, 122, 128, 0.4);
-        }
-
-        .perspex-card {
-            background: rgba(15, 14, 8, 0.75);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
-        }
-
-        .perspex-card::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            z-index: 0;
-            margin: -2px;
-            border-radius: inherit;
-            background: linear-gradient(135deg, rgba(2, 130, 242, 0.3), rgba(2, 130, 242, 0.1), rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.3));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .perspex-card:hover {
-             border-color: rgba(255, 215, 0, 0.5);
-             transform: translateY(-5px);
-             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .perspex-card:hover::before {
-            opacity: 1;
-        }
-        
-        .perspex-card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .enhanced-button {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .enhanced-button-primary {
-            background-color: var(--action-blue);
-        }
-        .enhanced-button-primary:hover {
-            background-color: #359dff;
-            box-shadow: 0 0 20px rgba(2, 130, 242, 0.6);
-        }
-
-        .enhanced-button-secondary {
-            background-color: transparent;
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-        }
-        .enhanced-button-secondary:hover {
-            background-color: var(--accent-gold);
-            color: var(--dark-primary);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        }
-    </style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Flow Networks",
-      "url": "https://flownetworks.ai",
-      "logo": "/images/logos/logo-2d-gold.png",
-      "sameAs": [],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "email": "contact@flownetworks.ai"
-      },
-      "description": "Flow Networks transforms your venue's WiFi into a secure, intelligent AI Gateway. We unify your siloed data, provide predictive intelligence, and enable hyper-personalized guest experiences to drive operational efficiency and revenue."
-    }
-    </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body class="bg-dark-primary text-text-light antialiased">
-
-    <div class="absolute top-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none">
-        <div class="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-brand-teal rounded-full opacity-10 blur-3xl animate-pulse"></div>
-        <div class="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-action-blue rounded-full opacity-10 blur-3xl animate-pulse delay-2000"></div>
-    </div>
-    
-    <div class="relative z-10">
-
-        <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-card border-t-0 border-l-0 border-r-0">
-            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#" class="flex items-center">
-                    <img src="/images/logos/logo-2d-gold.png" alt="Flow Networks Logo - a gold pin icon with a teal WiFi symbol and circuit patterns." class="h-8 w-auto">
-                </a>
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#platform" class="text-text-light hover:text-accent-gold transition">The Platform</a>
-                    <a href="#plans" class="text-text-light hover:text-accent-gold transition">Plans</a>
-                    <a href="#industries" class="text-text-light hover:text-accent-gold transition">Industries</a>
-                    <a href="#gateway" class="text-text-light hover:text-accent-gold transition">Why Flow?</a>
-                    <a href="#contact" class="text-text-light hover:text-accent-gold transition">Contact</a>
-                </nav>
-                <a href="#contact" class="hidden md:inline-block px-6 py-2 rounded-lg font-bold text-white enhanced-button enhanced-button-primary">
-                    Start For Free
-                </a>
-                <button id="mobile-menu-button" class="md:hidden text-white" aria-label="Open mobile menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-             <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col space-y-4">
-                <a href="#platform" class="text-text-light hover:text-accent-gold transition">The Platform</a>
-                <a href="#plans" class="text-text-light hover:text-accent-gold transition">Plans</a>
-                <a href="#industries" class="text-text-light hover:text-accent-gold transition">Industries</a>
-                <a href="#gateway" class="text-text-light hover:text-accent-gold transition">Why Flow?</a>
-                <a href="#contact" class="text-text-light hover:text-accent-gold transition">Contact</a>
-                <a href="#contact" class="mt-2 inline-block px-6 py-2 rounded-lg font-bold text-white text-center enhanced-button enhanced-button-primary">
-                    Start For Free
-                </a>
-            </div>
-        </header>
-
-        <main>
-<section class="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden">
-    <div class="absolute inset-0 -z-10">
-        <img src="/images/hero/hero-background.jpg" alt="A person holding a smartphone in a futuristic airport, showing targeted offers unlocked by connecting to the intelligent WiFi." class="w-full h-full object-cover opacity-20">
-        <div class="absolute inset-0 bg-gradient-to-t from-dark-primary via-dark-primary/80 to-transparent"></div>
-    </div>
-    <div class="container mx-auto px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <img src="/images/hero/logo-3d.png" alt="Flow Networks 3D Logo - a gold and teal icon representing intelligent location-based services." class="mx-auto h-40 md:h-56 w-auto mb-8 animate-pulse">
-            
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-gradient-animated">
-                Your Venue, Intelligently Orchestrated.
-            </h1>
-            
-            <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-300 mb-10">
-                Our AI Gateway transforms your WiFi into an intelligent conductor for every person on-site. It automatically identifies their role—guest, staff, or vendor—to deliver a secure, conversational, and perfectly tuned experience that guides their journey while seamlessly achieving your venue's objectives.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="#contact" class="w-full sm:w-auto px-8 py-3 rounded-lg font-bold text-white text-lg enhanced-button enhanced-button-primary">
-                    Get Started For Free
-                </a>
-                <a href="#platform" class="w-full sm:w-auto px-8 py-3 rounded-lg font-bold text-lg enhanced-button enhanced-button-secondary">
-                    See How It Works
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-            <section id="platform" class="py-20">
-                <div class="container mx-auto px-6">
-                    <div class="perspex-card rounded-2xl p-8 md:p-12 relative overflow-hidden">
-                        <img src="/images/platform/platform-showcase.jpg" alt="A smartphone displaying a secure WiFi connection confirmation screen inside a modern venue." class="absolute inset-0 w-full h-full object-cover opacity-10 -z-10">
-                        <div class="absolute inset-0 bg-dark-secondary/70 -z-10"></div>
-                        
-                        <div class="text-center max-w-3xl mx-auto mb-16">
-                            <h2 class="text-3xl md:text-4xl font-bold mb-4">From Dumb Pipe to Intelligent Gateway</h2>
-                            <p class="text-gray-300 text-lg">Guest WiFi is your most underutilized asset. We turn it into your venue's central nervous system—a source of truth that makes every other system you own more valuable.</p>
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <div class="glass-card hover-glow-primary rounded-xl p-8 text-center">
-                                <div class="flex justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M12 18.75a.375.375 0 11.75 0 .375.375 0 01-.75 0zM4.163 11.28a9.75 9.75 0 0115.674 0M2.096 7.5a14.25 14.25 0 0120.808 0" /></svg></div>
-                                <h3 class="text-2xl font-bold mb-3">1. Verify Presence</h3>
-                                <p class="text-gray-400">It starts with a seamless, branded login. Our gateway securely verifies that a visitor is physically in your venue, turning an anonymous person into a known presence.</p>
-                            </div>
-                            <div class="glass-card hover-glow-primary rounded-xl p-8 text-center">
-                               <div class="flex justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" /></svg></div>
-                                <h3 class="text-2xl font-bold mb-3">2. Unify Data</h3>
-                                <p class="text-gray-400">This presence data becomes the missing link. We unify it with your siloed systems—POS, CRM, booking platforms—to create a single, actionable view of your customer.</p>
-                            </div>
-                            <div class="glass-card hover-glow-primary rounded-xl p-8 text-center">
-                                <div class="flex justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5" /></svg></div>
-                                <h3 class="text-2xl font-bold mb-3">3. Drive Results</h3>
-                                <p class="text-gray-400">Now, your systems can act with intelligence. Trigger personalized offers, predict staffing needs, and automate marketing that moves the needle because it's based on real-world behaviour.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="plans" class="py-20 bg-dark-secondary">
-                <div class="container mx-auto px-6">
-                    <div class="text-center max-w-3xl mx-auto mb-16">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">A Plan for Every Stage of Intelligence.</h2>
-                        <p class="text-gray-300">Start with a powerful, compliant foundation for free, then scale up your data and engagement capabilities as you grow.</p>
-                    </div>
-                    <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
-                        <div class="perspex-card rounded-xl p-8 flex flex-col"><h3 class="text-2xl font-bold mb-2">Connect</h3><p class="text-xl font-bold text-accent-gold mb-4">Free Forever</p><p class="text-gray-400 flex-grow mb-6">The essential first step. Provide secure, branded guest WiFi that protects you and your visitors, complete with basic analytics.</p><div class="mb-6"><p class="font-bold text-accent-gold">Includes:</p><p>Custom Branded Splash Pages</p></div><a href="#contact" class="mt-auto w-full text-center px-6 py-3 rounded-lg font-bold text-lg enhanced-button enhanced-button-secondary">Start For Free</a></div>
-                        <div class="perspex-card rounded-xl p-8 flex flex-col border-2 border-accent-gold relative"><div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-accent-gold text-dark-primary px-4 py-1 rounded-full text-sm font-bold">Most Popular</div><h3 class="text-2xl font-bold mb-2">Capture</h3><p class="text-xl font-bold text-gray-300 mb-4">Start Building Your Asset</p><p class="text-gray-400 flex-grow mb-6">Turn anonymous visitors into a valuable first-party data asset. Ethically capture customer data and sync it with your existing marketing tools.</p><div class="mb-6"><p class="font-bold text-accent-gold">Includes Everything in Connect +:</p><p>CRM & Marketing Integrations</p></div><a href="#contact" class="mt-auto w-full text-center px-6 py-3 rounded-lg font-bold text-lg enhanced-button enhanced-button-primary">Request a Demo</a></div>
-                        <div class="perspex-card rounded-xl p-8 flex flex-col"><h3 class="text-2xl font-bold mb-2">Engage</h3><p class="text-xl font-bold text-gray-300 mb-4">Automate & Personalize</p><p class="text-gray-400 flex-grow mb-6">The ultimate toolkit for personalization at scale. Use logic flows and API integration to create unique guest journeys that drive loyalty and revenue automatically.</p><div class="mb-6"><p class="font-bold text-accent-gold">Includes Everything in Capture +:</p><p>Logic Flow & Journey Customization</p></div><a href="#contact" class="mt-auto w-full text-center px-6 py-3 rounded-lg font-bold text-lg enhanced-button enhanced-button-secondary">Talk to an Expert</a></div>
-                        <div class="perspex-card rounded-xl p-8 flex flex-col"><h3 class="text-2xl font-bold mb-2">Enterprise</h3><p class="text-xl font-bold text-gray-300 mb-4">Your Vision, Realized</p><p class="text-gray-400 flex-grow mb-6">Our flagship offering. A fully managed service that combines our entire platform with the power of the Flow AI Gateway for predictive insights and operational automation.</p><div class="mb-6"><p class="font-bold text-accent-gold">Includes Everything in Engage +:</p><p>Flow AI Gateway & Managed Services</p></div><a href="#contact" class="mt-auto w-full text-center px-6 py-3 rounded-lg font-bold text-lg enhanced-button enhanced-button-secondary">Learn More</a></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="industries" class="py-20">
-    <div class="container mx-auto px-6">
-        <div class="text-center max-w-4xl mx-auto mb-16">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-gradient-animated">One Venue. Infinite Journeys.</h2>
-            <p class="text-gray-300 text-lg">A stadium isn't just one space; it's a city within a city, with thousands of people needing different things at the same time. A generic WiFi network sees chaos. Our AI Gateway sees a symphony and acts as the conductor.</p>
-        </div>
-        
-        <div class="perspex-card rounded-2xl p-8 md:p-12">
-            <div class="grid lg:grid-cols-3 gap-8 items-center">
-                <div class="lg:col-span-1">
-                    <img src="/images/industries/events.jpg" alt="A packed stadium during a concert, with digital overlays showing data streams and connectivity." class="w-full h-full object-cover rounded-xl shadow-lg">
-                </div>
-                <div class="lg:col-span-2">
-                    <div class="inline-flex items-center gap-3 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                           <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-1.5h5.25m-5.25 0h5.25m-5.25 0h5.25m2.25-7.5l-3 3m0 0l-3-3m3 3V6" />
-                        </svg>
-                        <h3 class="text-2xl font-bold">Stadiums & Event Spaces</h3>
-                    </div>
-                    <p class="text-gray-400 mb-6"><strong>The Problem:</strong> You have tens of thousands of people—fans, vendors, security, artists—all with different needs, permissions, and objectives. Disconnected systems for ticketing, POS, and security create friction, missed revenue, and operational blind spots.</p>
-                    <p class="text-gray-300 font-bold mb-4">The Gateway Solution: It identifies, authenticates, and personalizes the journey for everyone. Let's follow a few people at today's championship game:</p>
-                </div>
-            </div>
-
-            <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-card hover-glow-primary rounded-xl p-6">
-                    <h4 class="font-bold text-xl mb-2 text-accent-gold">Meet Chloe, The Fan.</h4>
-                    <p class="text-gray-400">Upon connecting, the Gateway authenticates her ticket. Her phone becomes her pass, wallet, and guide. She pre-orders drinks to skip the line, uses the AR wayfinding to locate her friends, and receives an exclusive 20% discount on merchandise for her favorite player, triggered the moment she walks past the team store.</p>
-                </div>
-
-                <div class="glass-card hover-glow-primary rounded-xl p-6">
-                    <h4 class="font-bold text-xl mb-2 text-accent-gold">Meet Marcus, The Vendor.</h4>
-                    <p class="text-gray-400">The Gateway is his business intelligence partner. It connects his POS to the stadium's inventory system. Based on real-time footfall data and historical trends, it alerts him he's projected to sell out of hot dogs in 30 minutes and automatically suggests a restock order. All transactions are cashless and instantly reconciled.</p>
-                </div>
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 id="contact-heading" class="text-3xl md:text-4xl font-bold mb-4">Ready to Give Your Venue Sight?</h2>
+                <p id="contact-subheading" class="text-gray-300 text-lg mb-8">It starts with a conversation. Let our strategists show you the untapped potential within your venue. Start for free today—no credit card, no obligation.</p>
                 
-                <div class="glass-card hover-glow-primary rounded-xl p-6">
-                    <h4 class="font-bold text-xl mb-2 text-accent-gold">Meet David, Security Ops.</h4>
-                    <p class="text-gray-400">He has a God's-eye view. The Gateway identifies him as security staff, giving his device secure access to internal camera feeds and staff communication channels. Heatmap data shows unexpected congestion forming at Gate 7; he dispatches a team to the precise location before it becomes a problem, all from his tablet.</p>
-                </div>
-                
-                <div class="glass-card hover-glow-primary rounded-xl p-6">
-                    <h4 class="font-bold text-xl mb-2 text-accent-gold">Meet Anya, The Sound Tech.</h4>
-                    <p class="text-gray-400">When Anya connects, the Gateway recognizes her device's MAC address and authenticates her as part of the production crew. It automatically grants her access to the isolated, high-bandwidth production network, allowing her to securely monitor and control audio systems across the venue wirelessly, without interference from the public network.</p>
-                </div>
-            </div>
-            
-            <div class="mt-12 text-center bg-dark-primary p-6 rounded-lg">
-                 <h4 class="font-bold text-xl mb-2 text-white">The Result: A Truly Intelligent Venue</h4>
-                 <p class="text-gray-300 max-w-3xl mx-auto">The AI Gateway transforms a chaotic event into a synchronized, data-rich operation. Revenue per fan increases through personalized offers. Safety is enhanced through predictive crowd control. Staff become more efficient with role-based access to the tools they need. And every interaction builds a richer data asset, making the next event even more successful.</p>
-            </div>
-        </div>
+                <form id="contact-form" action="/api/contact" method="POST" class="space-y-6">
+                    <input type="hidden" id="cta_source" name="cta_source" value="Activate Free Plan">
 
-    </div>
-</section>
-            
-            <section class="py-20 bg-dark-secondary">
-                 <div class="container mx-auto px-6">
-                    <div class="text-center max-w-3xl mx-auto mb-16">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">An Ecosystem of Value</h2>
-                        <p class="text-gray-300">Amplify your results with powerful add-ons and exclusive partnerships, all seamlessly integrated through the AI Gateway.</p>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="glass-card hover-glow-primary rounded-xl p-8">
-                            <h3 class="text-2xl font-bold mb-3">Monetize & Understand</h3>
-                            <p class="text-gray-400">Turn your WiFi into a direct revenue stream with **Paid Access** tiers. Gain priceless, real-time feedback by deploying targeted **Surveys** at key moments in the visitor journey.</p>
-                        </div>
-                        <div class="glass-card hover-glow-primary rounded-xl p-8 flex flex-col items-center text-center">
-                            <img src="/images/logos/friendly-wifi-logo.png" alt="Friendly WiFi Approved Partner Logo" class="h-12 mb-4">
-                            <h3 class="text-2xl font-bold mb-3">Protect Your Brand & Guests</h3>
-                            <p class="text-gray-400">As the exclusive South African partner, we offer **Friendly WiFi certification** free of charge. This global standard provides peace of mind by ensuring a safe, family-friendly online environment.</p>
-                        </div>
-                        <div class="glass-card hover-glow-primary rounded-xl p-8 flex flex-col items-center text-center">
-                             <img src="/images/logos/cnn-logo.webp" alt="CNN Hospitality Partner Programme Logo" class="h-12 mb-4">
-                            <h3 class="text-2xl font-bold mb-3">Deliver Premium Content</h3>
-                            <p class="text-gray-400">Through our exclusive partnership, integrate the **CNN Travel Advertising Platform (TAP)**. Enhance the guest experience with world-class content and unlock a new ancillary revenue stream.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="gateway" class="py-20 relative overflow-hidden">
-                <div class="absolute inset-0 -z-10">
-                    <img src="/images/gateway/gateway-concept.jpg" alt="A person in a stadium using their phone to interact with the AI Gateway, showing personalized stats and connections." class="w-full h-full object-cover opacity-20">
-                    <div class="absolute inset-0 bg-gradient-to-b from-dark-secondary via-dark-primary/80 to-dark-primary"></div>
-                </div>
-                <div class="container mx-auto px-6">
-                    <div class="grid lg:grid-cols-2 gap-12 items-center">
-                        <div class="relative">
-                             <h2 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6 text-gradient-animated">
-                               Why Flow? Because Data Isn't Enough. You Need Intelligence.
-                            </h2>
-                            <p class="text-lg text-gray-300 mb-6">Other platforms give you dashboards. We give you a co-pilot.</p>
-                            <ul class="space-y-4 text-gray-300">
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-accent-gold mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    <span><strong class="text-white">Unified Data Fabric:</strong> We break down your data silos. The AI Gateway connects your POS, CRM, cameras, and more into a single, cohesive intelligence layer.</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-accent-gold mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    <span><strong class="text-white">Actionable & Predictive Intelligence:</strong> Our Venue Intelligence Engine doesn't just report what happened; it predicts what will happen and recommends what to do next—from optimizing staffing to preventing customer churn.</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-accent-gold mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    <span><strong class="text-white">Hyper-Personalization at Scale:</strong> The Gateway makes true 1:1 engagement possible. Deliver the right message, to the right person, at the right moment in their physical journey to create experiences that build loyalty and drive revenue.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="rounded-xl overflow-hidden glass-card p-2">
-                             <img src="/images/gateway/gateway-concept.jpg" alt="Conceptual image of the AI Gateway in a stadium, showing data streams connecting the physical space to digital experiences on a smartphone." class="rounded-lg object-cover w-full h-full">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact" class="py-20">
-                <div class="container mx-auto px-6">
-                    <div class="max-w-2xl mx-auto text-center">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Give Your Venue Sight?</h2>
-                        <p class="text-gray-300 text-lg mb-8">It starts with a conversation. Let our strategists show you the untapped potential within your venue. Start for free today—no credit card, no obligation.</p>
-                        
-                        <form action="/api/contact" method="POST" class="space-y-6">
-                            <div>
-                                <label for="name" class="sr-only">Your Name</label>
-                                <input type="text" name="name" id="name" placeholder="Your Name" required class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-action-blue transition">
-                            </div>
-                            <div>
-                                <label for="email" class="sr-only">Your Email</label>
-                                <input type="email" name="email" id="email" placeholder="Your Email" required class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-action-blue transition">
-                            </div>
-                            <div>
-                               <label for="venue-type" class="sr-only">Venue Type</label>
-                               <select name="venue-type" id="venue-type" aria-label="Select Venue Type" class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-action-blue transition text-gray-400"><option>Select Venue Type</option><option>Hospitality</option><option>Retail</option><option>Event Space</option><option>Transportation</option><option>Other</option></select>
-                            </div>
-                             <div>
-                                <label for="message" class="sr-only">Your Message</label>
-                                <textarea name="message" id="message" rows="4" placeholder="Tell us about your venue and your goals..." class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-action-blue transition"></textarea>
-                            </div>
-                            <div>
-                                <button type="submit" class="w-full px-8 py-3 rounded-lg font-bold text-white text-lg enhanced-button enhanced-button-primary">
-                                    Activate My Free Plan
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <footer class="bg-dark-secondary py-12">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="space-y-4">
-                        <a href="#" class="flex items-center">
-                             <img src="/images/logos/logo-2d-gold.png" alt="Flow Networks Logo" class="h-8 w-auto">
-                        </a>
-                        <p class="text-gray-400">The AI Gateway for Intelligent Venues. We connect your digital ecosystem to the physical world.</p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-8">
-                         <div>
-                            <h4 class="font-bold mb-3 text-accent-gold">Explore</h4>
-                            <ul class="space-y-2">
-                                <li><a href="#platform" class="text-gray-400 hover:text-white">The Platform</a></li>
-                                <li><a href="#plans" class="text-gray-400 hover:text-white">Plans</a></li>
-                                <li><a href="#industries" class="text-gray-400 hover:text-white">Industries</a></li>
-                                <li><a href="#gateway" class="text-gray-400 hover:text-white">Why Flow?</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-bold mb-3 text-accent-gold">Company</h4>
-                            <ul class="space-y-2">
-                                <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
-                                <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
-                                <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                                <li><a href="#" class="text-gray-400 hover:text-white">Terms of Use</a></li>
-                            </ul>
-                        </div>
-                    </div>
                     <div>
-                         <h4 class="font-bold mb-3 text-accent-gold">Connect With Us</h4>
-                         <div class="flex space-x-4">
-                            <a href="#" class="text-gray-400 hover:text-white" aria-label="Follow us on Facebook"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
-                            <a href="#" class="text-gray-400 hover:text-white" aria-label="Follow us on X"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
-                            <a href="#" class="text-gray-400 hover:text-white" aria-label="Follow us on LinkedIn"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.206v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H6.328C3.965 1 2 2.985 2 5.337v13.326C2 21.015 3.965 23 6.328 23h11.34c2.365 0 4.328-1.985 4.328-4.337V5.337C22 2.985 20.035 1 17.668 1z" clip-rule="evenodd" /></svg></a>
-                        </div>
+                        <label for="full_name" class="sr-only">Full Name</label>
+                        <input type="text" name="full_name" id="full_name" placeholder="Full Name" required class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-action-blue transition">
                     </div>
-                </div>
-                <div class="mt-8 border-t border-gray-800 pt-8 text-center text-gray-500">
-                    <p>&copy; 2025 Flow Networks. All Rights Reserved.</p>
-                </div>
-            </div>
-        </footer>
+                    
+                    <div id="business_name_field">
+                        <label for="business_name" class="sr-only">Business Name</label>
+                        <input type="text" name="business_name" id="business_name" placeholder="Business Name" class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-action-blue transition">
+                    </div>
 
-    </div>
+                    <div>
+                        <label for="email" class="sr-only">Your Email</label>
+                        <input type="email" name="email" id="email" placeholder="Your Email" required class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-action-blue transition">
+                    </div>
+
+                    <div id="city_field">
+                        <label for="city" class="sr-only">City</label>
+                        <input type="text" name="city" id="city" placeholder="City" class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-action-blue transition">
+                    </div>
+                    
+                    <div>
+                        <label for="comment" class="sr-only">Comment/Additional Info</label>
+                        <textarea name="comment" id="comment" rows="4" placeholder="Tell us about your venue and your goals..." class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-action-blue transition"></textarea>
+                    </div>
+
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAB4_3paL9cBdsayD" data-theme="dark"></div>
+
+                    <div>
+                        <button id="submit-button" type="submit" class="w-full px-8 py-3 rounded-lg font-bold text-white text-lg enhanced-button enhanced-button-primary">
+                            Activate My Free Plan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.onscroll = () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-dark-secondary/90');
-            } else {
-                navbar.classList.remove('bg-dark-secondary/90');
-            }
-        };
-        
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        // ... (your existing navbar and mobile menu scripts) ...
 
-        // Close mobile menu when a link is clicked
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                 mobileMenu.classList.add('hidden');
+        // --- NEW: Dynamic CTA Form Handling ---
+        const contactForm = document.getElementById('contact-form');
+        const contactHeading = document.getElementById('contact-heading');
+        const submitButton = document.getElementById('submit-button');
+        const ctaSourceInput = document.getElementById('cta_source');
+        
+        // Add more fields here as needed
+        const businessNameField = document.getElementById('business_name_field');
+        const cityField = document.getElementById('city_field');
+
+        const ctaConfigs = {
+            'default': {
+                heading: "Ready to Give Your Venue Sight?",
+                buttonText: "Activate My Free Plan",
+                ctaValue: "Activate Free Plan",
+                showFields: [] // No extra fields for the default
+            },
+            'Request a Demo': {
+                heading: "Request a Live Demo",
+                buttonText: "Request Your Demo",
+                ctaValue: "Request a Demo",
+                showFields: [businessNameField, cityField] // Show these for a demo request
+            },
+            'Talk to an Expert': {
+                heading: "Talk to an Expert",
+                buttonText: "Schedule a Consultation",
+                ctaValue: "Talk to an Expert",
+                showFields: [businessNameField, cityField]
+            }
+            // Add other CTA button text values here
+        };
+
+        function updateFormForCTA(ctaType = 'default') {
+            const config = ctaConfigs[ctaType] || ctaConfigs['default'];
+
+            contactHeading.textContent = config.heading;
+            submitButton.textContent = config.buttonText;
+            ctaSourceInput.value = config.ctaValue;
+
+            // Hide all optional fields first
+            [businessNameField, cityField].forEach(field => field.style.display = 'none');
+            
+            // Show fields based on config
+            config.showFields.forEach(field => field.style.display = 'block');
+        }
+
+        // Add event listeners to all CTA buttons that link to the #contact section
+        document.querySelectorAll('a[href="#contact"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Use the link's text content to determine the CTA type
+                const ctaType = e.target.textContent.trim();
+                updateFormForCTA(ctaType);
             });
         });
 
+        // Initialize the form to the default state
+        updateFormForCTA('default');
     </script>
 </body>
 </html>
