@@ -84,4 +84,73 @@
                             <h3 class="text-2xl font-bold mb-2">Engage</h3>
                             <p class="text-xl font-bold text-gray-300 mb-4">Automate & Personalize</p>
                             <p class="text-gray-400 flex-grow mb-6">The ultimate toolkit for personalization at scale.</p>
-                            <a href="#contact" data-cta-type="Talk to an Expert" class
+                            <a href="#contact" data-cta-type="Talk to an Expert" class="mt-auto w-full px-6 py-3 rounded-lg font-bold text-lg enhanced-button enhanced-button-secondary">Talk to an Expert</a>
+                        </div>
+                        <div class="perspex-card rounded-xl p-8 flex flex-col text-center">
+                            <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                            <p class="text-xl font-bold text-gray-300 mb-4">Your Vision, Realized</p>
+                            <p class="text-gray-400 flex-grow mb-6">Our flagship offering for predictive insights and automation.</p>
+                            <a href="#contact" data-cta-type="Learn More" class="mt-auto w-full px-6 py-3 rounded-lg font-bold text-lg enhanced-button enhanced-button-secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contact" class="py-20">
+                <div class="container mx-auto px-6 max-w-2xl text-center">
+                    <h2 id="contact-heading" class="text-3xl md:text-4xl font-bold mb-4">Ready to Give Your Venue Sight?</h2>
+                    <p id="contact-subheading" class="text-gray-300 text-lg mb-8">It starts with a conversation.</p>
+                    <form id="contact-form" action="/api/contact" method="POST" class="space-y-6">
+                        <input type="hidden" id="cta_source" name="cta_source" value="Default">
+                        <div><input type="text" name="full_name" placeholder="Full Name" required class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4"></div>
+                        <div id="business_name_field" style="display: none;"><input type="text" name="business_name" placeholder="Business Name" class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4"></div>
+                        <div><input type="email" name="email" placeholder="Your Email" required class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4"></div>
+                        <div id="city_field" style="display: none;"><input type="text" name="city" placeholder="City" class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4"></div>
+                        <div><textarea name="comment" rows="4" placeholder="Tell us about your venue..." class="w-full bg-dark-secondary border border-brand-teal/30 rounded-lg py-3 px-4"></textarea></div>
+                        
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAB4_3paL9cBdsayD" data-theme="dark"></div>
+                        
+                        <div><button id="submit-button" type="submit" class="w-full px-8 py-3 rounded-lg font-bold text-white text-lg enhanced-button enhanced-button-primary">Activate My Free Plan</button></div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const contactHeading = document.getElementById('contact-heading');
+        const contactSubheading = document.getElementById('contact-subheading');
+        const submitButton = document.getElementById('submit-button');
+        const ctaSourceInput = document.getElementById('cta_source');
+        const businessNameField = document.getElementById('business_name_field');
+        const cityField = document.getElementById('city_field');
+
+        const ctaConfigs = {
+            'default': { heading: "Ready to Give Your Venue Sight?", subheading: "It starts with a conversation. Start for free today.", buttonText: "Activate My Free Plan", ctaValue: "Activate Free Plan", showFields: [] },
+            'Start For Free': { heading: "Ready to Give Your Venue Sight?", subheading: "Start for free today—no credit card, no obligation.", buttonText: "Activate My Free Plan", ctaValue: "Activate Free Plan", showFields: [] },
+            'Request a Demo': { heading: "Request a Live Demo", subheading: "Let us show you how the AI Gateway can transform your venue.", buttonText: "Request Your Demo", ctaValue: "Request a Demo", showFields: [businessNameField, cityField] },
+            'Talk to an Expert': { heading: "Talk to an Expert", subheading: "Schedule a free consultation with one of our strategists.", buttonText: "Schedule My Consultation", ctaValue: "Talk to an Expert", showFields: [businessNameField] },
+            'Learn More': { heading: "Learn More About Enterprise", subheading: "Let's discuss a custom solution for your organization.", buttonText: "Request Enterprise Info", ctaValue: "Enterprise Inquiry", showFields: [businessNameField, cityField] }
+        };
+
+        function updateFormForCTA(ctaType = 'default') {
+            const config = ctaConfigs[ctaType] || ctaConfigs['default'];
+            contactHeading.textContent = config.heading;
+            contactSubheading.textContent = config.subheading;
+            submitButton.textContent = config.buttonText;
+            ctaSourceInput.value = config.ctaValue;
+            [businessNameField, cityField].forEach(field => field.style.display = 'none');
+            config.showFields.forEach(field => field.style.display = 'block');
+        }
+        
+        document.querySelectorAll('a[href="#contact"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const ctaType = e.currentTarget.dataset.ctaType;
+                updateFormForCTA(ctaType);
+            });
+        });
+
+        updateFormForCTA('default');
+    </script>
+</body>
+</html>
