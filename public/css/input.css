@@ -3,27 +3,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Define all our CSS variables (from Design_Guide.md) at the base layer */
+/* Define all our CSS variables (from Brand Guide) at the base layer */
 @layer base {
   :root {
-    --primary: 184 100% 25%;  /* Flow Primary Teal */
-    --secondary: 211 98% 48%; /* Flow Action Blue */
-    --accent: 51 100% 50%;    /* Flow Highlight Yellow */
-    --background: 40 56% 4%;  /* Background Dark Primary */
-    --background-secondary: 40 33% 5%;
-    --foreground: 183 100% 94%; /* Text Light */
+    /* CORRECTED HSL Values from Brand and Colour Palette Guide */
+    --primary: 176 83% 46%;   /* #14D8CC */
+    --secondary: 205 100% 51%;  /* #0496FF */
+    --accent: 40 100% 64%;     /* #FFC145 */
+    --background: 233 36% 17%;  /* #1c203c */
+    --foreground: 290 25% 95%;  /* #F5F0F6 */
+    
+    /* Derived secondary background for section separation */
+    --background-secondary: 233 30% 22%; /* A slightly lighter/desaturated #1c203c */
 
     /* Transitions */
     --duration-standard: 300ms;
     --ease-gentle: cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Glows */
+    --glow-teal: 0 0 15px hsla(var(--primary), 0.5), 0 0 30px hsla(var(--primary), 0.3);
+    --glow-blue: 0 0 20px hsla(var(--secondary), 0.6);
+    --glow-yellow: 0 0 20px hsla(var(--accent), 0.5);
   }
 
   /* Base Body Styles */
   body { 
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply antialiased;
     font-family: 'Inter', sans-serif;
   }
   
@@ -56,7 +63,7 @@
   /* Glassmorphism Card */
   .glass-card {
     background-color: hsl(var(--background) / 0.6);
-    border: 1px solid rgba(0,0,0,0.06);
+    border: 1px solid hsl(var(--primary) / 0.2);
     transition: all 300ms var(--ease-gentle);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -65,8 +72,9 @@
   /* Perspex Card */
   .perspex-card {
     background-color: hsl(var(--background-secondary) / 0.75);
-    border: 1px solid rgba(0,0,0,0.06);
-    position: relative; overflow: hidden;
+    border: 1px solid hsl(var(--primary) / 0.2);
+    position: relative; 
+    overflow: hidden;
     transition: all 300ms var(--ease-gentle);
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
@@ -102,7 +110,7 @@
   }
 
   .btn-accent-glow {
-    /* enhanced-button applied via classes; set background and text directly */
+    @apply enhanced-button;
     background-color: hsl(var(--accent));
     color: hsl(var(--background));
   }
@@ -116,7 +124,7 @@
   .btn-accent-outline:hover {
     background-color: hsl(var(--accent));
     color: hsl(var(--background));
-    /* shadow-glow-yellow left as Tailwind utility if present */
+    @apply shadow-glow-yellow;
   }
 
   /* Text Link */
@@ -132,39 +140,44 @@
     @apply absolute top-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none;
   }
   .section-glow-bg .glow-1 {
-    @apply absolute top-[10%] left-[-10%] w-2/5 h-2/5 bg-primary rounded-full opacity-10;
+    @apply absolute top-[10%] left-[-10%] w-2/5 h-2/5 bg-primary rounded-full;
     filter: blur(100px);
-    animation: pulse 8s infinite alternate;
+    /* --- FIX: Applied animation directly --- */
+    animation: float 12s infinite alternate ease-in-out;
   }
   .section-glow-bg .glow-2 {
-    @apply absolute bottom-[10%] right-[-10%] w-2/5 h-2/5 bg-secondary rounded-full opacity-10;
+    @apply absolute bottom-[10%] right-[-10%] w-2/5 h-2/5 bg-secondary rounded-full;
     filter: blur(100px);
-    animation: pulse 10s infinite alternate;
+    /* --- FIX: Applied animation directly --- */
+    animation: float 10s infinite alternate ease-in-out -4s;
   }
 }
 
 /* Define custom utility animations/classes */
 @layer utilities {
-  .glow-opacity-5 {
-    opacity: 0.05;
-  }
-  .glow-opacity-5-delay-2 {
-    opacity: 0.05;
-    animation-delay: -2s;
-  }
-  /* Custom glow shadows used by @apply */
   .shadow-glow-teal {
-    box-shadow: 0 10px 30px -10px hsla(var(--primary), 0.35);
+    box-shadow: 0 0 15px hsla(var(--primary), 0.5), 0 0 30px hsla(var(--primary), 0.3);
   }
   .shadow-glow-yellow {
-    box-shadow: 0 10px 30px -10px hsla(var(--accent), 0.35);
+    box-shadow: 0 0 20px hsla(var(--accent), 0.5);
   }
   .shadow-glow-blue {
-    box-shadow: 0 10px 30px -10px hsla(var(--secondary), 0.35);
+    box-shadow: 0 0 20px hsla(var(--secondary), 0.6);
   }
 }
 
-@keyframes pulse {
-  0% { transform: scale(0.9); opacity: 0.05; }
-  100% { transform: scale(1.1); opacity: 0.1; }
+/* --- FIX: Added @keyframes directly to the CSS --- */
+@keyframes float {
+  0% { 
+    transform: translate(0px, 0px) scale(1); 
+    opacity: 0.08; 
+  }
+  50% { 
+    transform: translate(20px, 15px) scale(1.1); 
+    opacity: 0.12; 
+  }
+  100% { 
+    transform: translate(0px, 0px) scale(1); 
+    opacity: 0.08; 
+  }
 }

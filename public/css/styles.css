@@ -435,20 +435,27 @@ video {
 }
 
 :root {
-  --primary: 184 100% 25%;
-  /* Flow Primary Teal */
-  --secondary: 211 98% 48%;
-  /* Flow Action Blue */
-  --accent: 51 100% 50%;
-  /* Flow Highlight Yellow */
-  --background: 40 56% 4%;
-  /* Background Dark Primary */
-  --background-secondary: 40 33% 5%;
-  --foreground: 183 100% 94%;
-  /* Text Light */
+  /* CORRECTED HSL Values from Brand and Colour Palette Guide */
+  --primary: 176 83% 46%;
+  /* #14D8CC */
+  --secondary: 205 100% 51%;
+  /* #0496FF */
+  --accent: 40 100% 64%;
+  /* #FFC145 */
+  --background: 233 36% 17%;
+  /* #1c203c */
+  --foreground: 290 25% 95%;
+  /* #F5F0F6 */
+  /* Derived secondary background for section separation */
+  --background-secondary: 233 30% 22%;
+  /* A slightly lighter/desaturated #1c203c */
   /* Transitions */
   --duration-standard: 300ms;
   --ease-gentle: cubic-bezier(0.4, 0, 0.2, 1);
+  /* Glows */
+  --glow-teal: 0 0 15px hsla(var(--primary), 0.5), 0 0 30px hsla(var(--primary), 0.3);
+  --glow-blue: 0 0 20px hsla(var(--secondary), 0.6);
+  --glow-yellow: 0 0 20px hsla(var(--accent), 0.5);
 }
 
 /* Base Body Styles */
@@ -623,7 +630,7 @@ body::before {
 
 .glass-card {
   background-color: hsl(var(--background) / 0.6);
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid hsl(var(--primary) / 0.2);
   transition: all 300ms var(--ease-gentle);
   backdrop-filter: blur(10px);
 }
@@ -632,7 +639,7 @@ body::before {
 
 .perspex-card {
   background-color: hsl(var(--background-secondary) / 0.75);
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid hsl(var(--primary) / 0.2);
   position: relative;
   overflow: hidden;
   transition: all 300ms var(--ease-gentle);
@@ -654,14 +661,20 @@ body::before {
 
 .hover-glow-primary:hover {
   border-color: hsl(var(--primary) / 0.4);
-  box-shadow: 0 10px 30px -10px hsla(var(--primary), 0.35);
+  --tw-shadow: var(--glow-teal);
+  --tw-shadow-colored: var(--glow-teal);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: 0 0 15px hsla(var(--primary), 0.5), 0 0 30px hsla(var(--primary), 0.3);
 }
 
 .hover-glow-accent:hover {
   --tw-translate-y: -0.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   border-color: hsl(var(--accent) / 0.5);
-  box-shadow: 0 10px 30px -10px hsla(var(--accent), 0.35);
+  --tw-shadow: var(--glow-yellow);
+  --tw-shadow-colored: var(--glow-yellow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: 0 0 20px hsla(var(--accent), 0.5);
 }
 
 /* Enhanced Button Base */
@@ -690,11 +703,24 @@ body::before {
   --tw-translate-y: -0.125rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --tw-bg-opacity: 0.9;
-  box-shadow: 0 10px 30px -10px hsla(var(--secondary), 0.35);
+  --tw-shadow: var(--glow-blue);
+  --tw-shadow-colored: var(--glow-blue);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: 0 0 20px hsla(var(--secondary), 0.6);
 }
 
 .btn-accent-glow {
-  /* enhanced-button applied via classes; set background and text directly */
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-weight: 700;
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   background-color: hsl(var(--accent));
   color: hsl(var(--background));
 }
@@ -703,7 +729,10 @@ body::before {
   --tw-translate-y: -0.125rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --tw-bg-opacity: 0.9;
-  box-shadow: 0 10px 30px -10px hsla(var(--accent), 0.35);
+  --tw-shadow: var(--glow-yellow);
+  --tw-shadow-colored: var(--glow-yellow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: 0 0 20px hsla(var(--accent), 0.5);
 }
 
 .btn-accent-outline {
@@ -729,7 +758,10 @@ body::before {
 .btn-accent-outline:hover {
   background-color: hsl(var(--accent));
   color: hsl(var(--background));
-  /* shadow-glow-yellow left as Tailwind utility if present */
+  --tw-shadow: var(--glow-yellow);
+  --tw-shadow-colored: var(--glow-yellow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: 0 0 20px hsla(var(--accent), 0.5);
 }
 
 /* Text Link */
@@ -769,9 +801,9 @@ body::before {
   border-radius: 9999px;
   --tw-bg-opacity: 1;
   background-color: hsl(var(--primary) / var(--tw-bg-opacity));
-  opacity: 0.1;
   filter: blur(100px);
-  animation: pulse 8s infinite alternate;
+  /* --- FIX: Applied animation directly --- */
+  animation: float 12s infinite alternate ease-in-out;
 }
 
 .section-glow-bg .glow-2 {
@@ -783,9 +815,9 @@ body::before {
   border-radius: 9999px;
   --tw-bg-opacity: 1;
   background-color: hsl(var(--secondary) / var(--tw-bg-opacity));
-  opacity: 0.1;
   filter: blur(100px);
-  animation: pulse 10s infinite alternate;
+  /* --- FIX: Applied animation directly --- */
+  animation: float 10s infinite alternate ease-in-out -4s;
 }
 
 .sr-only {
@@ -916,6 +948,10 @@ body::before {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
 }
 
 .mt-4 {
@@ -1152,6 +1188,10 @@ body::before {
   overflow: hidden;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
 .scroll-smooth {
   scroll-behavior: smooth;
 }
@@ -1325,6 +1365,11 @@ body::before {
 
 .p-8 {
   padding: 2rem;
+}
+
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .px-4 {
@@ -1578,32 +1623,28 @@ body::before {
   transition-duration: 300ms;
 }
 
-.glow-opacity-5 {
-  opacity: 0.05;
-}
-
-.glow-opacity-5-delay-2 {
-  opacity: 0.05;
-  animation-delay: -2s;
-}
-
-/* Custom glow shadows used by @apply */
-
-/* Define all our CSS variables (from Design_Guide.md) at the base layer */
+/* Define all our CSS variables (from Brand Guide) at the base layer */
 
 /* Define custom components */
 
 /* Define custom utility animations/classes */
 
-@keyframes pulse {
+/* --- FIX: Added @keyframes directly to the CSS --- */
+
+@keyframes float {
   0% {
-    transform: scale(0.9);
-    opacity: 0.05;
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.08;
+  }
+
+  50% {
+    transform: translate(20px, 15px) scale(1.1);
+    opacity: 0.12;
   }
 
   100% {
-    transform: scale(1.1);
-    opacity: 0.1;
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.08;
   }
 }
 
@@ -1692,6 +1733,10 @@ body::before {
     --tw-space-x-reverse: 0;
     margin-right: calc(3rem * var(--tw-space-x-reverse));
     margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:p-16 {
+    padding: 4rem;
   }
 
   .md\:p-8 {
