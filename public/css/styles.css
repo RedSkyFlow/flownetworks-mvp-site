@@ -836,6 +836,29 @@ body::before {
   animation: float 9s infinite alternate ease-in-out -3s;
 }
 
+/* Temporary visible debug spotlight (very obvious during tests)
+     Will be toggled by `public/script.js`. Remove after verification. */
+
+#debug-spotlight {
+  position: fixed;
+  width: 780px;
+  height: 780px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  left: var(--mouse-x, 50%);
+  top: var(--mouse-y, 50%);
+  background: radial-gradient(circle at center,
+      rgba(20,216,204,0.75) 0%, rgba(20,216,204,0.45) 28%, rgba(4,150,255,0.18) 45%, transparent 60%);
+  mix-blend-mode: screen;
+  filter: blur(28px);
+  z-index: 99999;
+  transition: opacity 0.08s linear, left 0.06s linear, top 0.06s linear;
+  opacity: 0.95;
+  display: none;
+  /* shown by script when pointer active */
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -846,6 +869,10 @@ body::before {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+.visible {
+  visibility: visible;
 }
 
 .static {
@@ -1114,6 +1141,10 @@ body::before {
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.resize {
+  resize: both;
 }
 
 .list-inside {
@@ -1672,6 +1703,20 @@ body::before {
 /* Define custom components */
 
 /* Define custom utility animations/classes */
+
+/* Particle canvas sits behind content but above background image */
+
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  /* behind UI (z-10 content) but above background (-z-10) */
+  mix-blend-mode: screen;
+  opacity: 0.6;
+}
 
 .hover\:text-accent:hover {
   --tw-text-opacity: 1;
