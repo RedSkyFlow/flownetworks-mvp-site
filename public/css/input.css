@@ -65,13 +65,20 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 100;
-    background: radial-gradient(
-        circle 400px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
-        hsla(var(--primary), 0.15),
-        transparent 80%
-    );
-    transition: background 0.1s ease-out;
+  z-index: 60; /* keep above background but under interactive UI */
+  /* stronger, larger spotlight for testing */
+  background: radial-gradient(
+    circle 700px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    hsla(var(--primary), 0.45) 0%,
+    hsla(var(--primary), 0.28) 35%,
+    hsla(var(--primary), 0.12) 60%,
+    transparent 85%
+  ), radial-gradient(
+    circle 420px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    hsla(var(--secondary), 0.18) 0%,
+    transparent 60%
+  );
+  transition: background 0.06s linear;
   }
 }
 
@@ -160,27 +167,33 @@
   /* --- FIX: Removed @apply and used direct CSS --- */
   .section-glow-bg .glow-1 {
     position: absolute;
-    top: 10%;
-    left: -10%;
-    width: 40%;
-    height: 40%;
-    background-color: hsl(var(--primary));
+    top: 5%;
+    left: -15%;
+    width: 52%;
+    height: 52%;
+    background-color: hsla(var(--primary), 0.28);
     border-radius: 9999px; /* rounded-full */
-    filter: blur(100px);
-    animation: float 12s infinite alternate ease-in-out;
+    filter: blur(160px);
+    mix-blend-mode: screen;
+    box-shadow: 0 0 80px hsla(var(--primary), 0.45);
+    opacity: 0.9;
+    animation: float 10s infinite alternate ease-in-out;
   }
   
   /* --- FIX: Removed @apply and used direct CSS --- */
   .section-glow-bg .glow-2 {
     position: absolute;
-    bottom: 10%;
-    right: -10%;
-    width: 40%;
-    height: 40%;
-    background-color: hsl(var(--secondary));
+    bottom: 5%;
+    right: -15%;
+    width: 52%;
+    height: 52%;
+    background-color: hsla(var(--secondary), 0.26);
     border-radius: 9999px; /* rounded-full */
-    filter: blur(100px);
-    animation: float 10s infinite alternate ease-in-out -4s;
+    filter: blur(160px);
+    mix-blend-mode: screen;
+    box-shadow: 0 0 90px hsla(var(--secondary), 0.45);
+    opacity: 0.9;
+    animation: float 9s infinite alternate ease-in-out -3s;
   }
 }
 
