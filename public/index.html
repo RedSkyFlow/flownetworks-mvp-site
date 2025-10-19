@@ -15,210 +15,13 @@
     <meta property="og:url" content="https://flownetworks.ai"> <meta property="og:image" content="https://flownetworks.ai/images/hero/new-hero-banner.jpg"> <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Flow Networks | The Contextual Concierge for Any Venue">
     <meta name="twitter:description" content="Transform your existing infrastructure into real-time, actionable customer intelligence.">
-    <meta name="twitter:image" content="https://flownetworks.ai/images/hero/new-hero-banner.jpg"> <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="twitter:image" content="https://flownetworks.ai/images/hero/new-hero-banner.jpg"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
 
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-    <style>
-        :root {
-            /* Using HSL values inferred from your old hex codes,
-              as requested by Design_Guide.md.
-            */
-            --primary: 184 100% 25%;  /* Flow Primary Teal (from #007A80) */
-            --secondary: 211 98% 48%; /* Flow Action Blue (from #0282F2) */
-            --accent: 51 100% 50%;    /* Flow Highlight Yellow (from #FFD700) */
-            --background: 40 56% 4%;  /* Background Dark Primary (from #0A0903) */
-            --background-secondary: 40 33% 5%; /* (from #0F0E08) */
-            --foreground: 183 100% 94%; /* Text Light (from #E2FDFF) */
-
-            /* Glow Colors */
-            --glow-teal: 0 0 15px hsla(var(--primary), 0.5), 0 0 30px hsla(var(--primary), 0.3);
-            --glow-blue: 0 0 20px hsla(var(--secondary), 0.6);
-            --glow-yellow: 0 0 20px hsla(var(--accent), 0.5);
-
-            /* Transitions (from Design_Guide.md) */
-            --duration-standard: 300ms;
-            --ease-gentle: cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Base Body Styles */
-        body { 
-            background-color: hsl(var(--background)); 
-            color: hsl(var(--foreground)); 
-            font-family: 'Inter', sans-serif; /* Changed from Roboto to Inter as per Design_Guide */
-        }
-        
-        h1, h2, h3, h4, h5, h6 { 
-            font-family: 'Inter', sans-serif;
-            font-weight: 800; /* Use heavier weight for headlines */
-        }
-
-        /* Cursor Spotlight Effect (from Design_Guide.md) */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 100;
-            background: radial-gradient(
-                circle 400px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
-                hsla(var(--primary), 0.15),
-                transparent 80%
-            );
-            transition: background 0.1s ease-out;
-        }
-
-        /* Glassmorphism Card (from Design_Guide.md) */
-        .glass-card {
-            background: hsla(var(--background), 0.6);
-            border: 1px solid hsla(var(--primary), 0.2);
-            transition: all var(--duration-standard) var(--ease-gentle);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Perspex Card (Updated with new HSL variables) */
-        .perspex-card {
-            background: hsla(var(--background-secondary), 0.75);
-            border: 1px solid hsla(var(--primary), 0.2); /* Default border is Teal */
-            position: relative;
-            overflow: hidden;
-            transition: all var(--duration-standard) var(--ease-gentle);
-            -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
-        }
-
-        /* Hover Effects (from Design_Guide.md) */
-        .hover-lift {
-            transition: transform var(--duration-standard) var(--ease-gentle);
-        }
-        .hover-lift:hover {
-            transform: translateY(-4px);
-        }
-
-        .hover-glow-primary:hover {
-            box-shadow: var(--glow-teal);
-            border-color: hsla(var(--primary), 0.4);
-        }
-        
-        .hover-glow-accent:hover {
-            box-shadow: var(--glow-yellow);
-            border-color: hsla(var(--accent), 0.5);
-            transform: translateY(-5px); /* Added lift as seen in old CSS */
-        }
-
-        /* Enhanced Button Styles (from Design_Guide.md) */
-        .enhanced-button {
-            transition: all var(--duration-standard) var(--ease-gentle);
-            position: relative;
-            overflow: hidden;
-            font-weight: 700;
-            border-radius: 0.5rem; /* 8px */
-            padding: 0.75rem 1.5rem; /* 12px 24px */
-        }
-
-        /* Primary Action Button (Flow Action Blue) */
-        .btn-secondary-glow {
-            background-color: hsl(var(--secondary));
-            color: white;
-        }
-        .btn-secondary-glow:hover {
-            background-color: hsla(var(--secondary), 0.9);
-            box-shadow: var(--glow-blue);
-            transform: translateY(-2px);
-        }
-
-        /* Accent/Secondary Button (Flow Highlight Yellow) */
-        .btn-accent-glow {
-            background-color: hsl(var(--accent));
-            color: hsl(var(--background));
-        }
-        .btn-accent-glow:hover {
-            background-color: hsla(var(--accent), 0.9);
-            box-shadow: var(--glow-yellow);
-            transform: translateY(-2px);
-        }
-        
-        /* Outline/Tertiary Button (Yellow Outline) */
-        .btn-accent-outline {
-            background-color: transparent;
-            border: 2px solid hsl(var(--accent));
-            color: hsl(var(--accent));
-        }
-        .btn-accent-outline:hover {
-            background-color: hsl(var(--accent));
-            color: hsl(var(--background));
-            box-shadow: var(--glow-yellow);
-        }
-
-        /* Text Link */
-        .text-link {
-            color: hsl(var(--primary));
-            transition: color var(--duration-standard) var(--ease-gentle);
-        }
-        .text-link:hover {
-            color: hsla(var(--primary), 0.8);
-            text-decoration: underline;
-        }
-        
-        /* Section Particle/Glow Effects */
-        .section-glow-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .section-glow-bg .glow-1 {
-            position: absolute;
-            top: 10%;
-            left: -10%;
-            width: 40%;
-            height: 40%;
-            background: hsl(var(--primary));
-            border-radius: 50%;
-            opacity: 0.08;
-            filter: blur(100px);
-            animation: pulse 8s infinite alternate;
-        }
-        .section-glow-bg .glow-2 {
-            position: absolute;
-            bottom: 10%;
-            right: -10%;
-            width: 40%;
-            height: 40%;
-            background: hsl(var(--secondary));
-            border-radius: 50%;
-            opacity: 0.08;
-            filter: blur(100px);
-            animation: pulse 10s infinite alternate;
-        }
-
-        /* --- FIX for inline styles --- */
-        .glow-opacity-5 {
-            opacity: 0.05;
-        }
-        .glow-opacity-5-delay-2 {
-            opacity: 0.05;
-            animation-delay: -2s;
-        }
-        /* --- End FIX --- */
-        
-        @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.05; }
-            100% { transform: scale(1.1); opacity: 0.1; }
-        }
-    </style>
+    
+    <link rel="stylesheet" href="/css/styles.css">
 
     <script type="application/ld+json">
     {
@@ -250,7 +53,7 @@
     }
     </script>
 </head>
-<body class="bg-background text-foreground antialiased">
+<body>
     
     <div class="section-glow-bg">
         <div class="glow-1"></div>
@@ -271,7 +74,7 @@
                     <a href="#pricing" class="text-foreground hover:text-accent transition">Pricing</a>
                     <a href="#contact" class="text-foreground hover:text-accent transition">Contact</a>
                 </nav>
-                <a href="#contact" data-cta-type="Start Free Plan" class="hidden md:inline-block enhanced-button btn-secondary-glow">
+                <a href="#contact" data-cta-type="Start Free Plan" class="hidden md:inline-block btn-secondary-glow">
                     Get Started Free
                 </a>
                 <button id="mobile-menu-button" class="md:hidden text-white" aria-label="Open mobile menu">
@@ -284,7 +87,7 @@
                 <a href="#services" class="text-foreground hover:text-accent transition">Services</a>
                 <a href="#pricing" class="text-foreground hover:text-accent transition">Pricing</a>
                 <a href="#contact" class="text-foreground hover:text-accent transition">Contact</a>
-                <a href="#contact" data-cta-type="Start Free Plan" class="mt-2 inline-block text-center enhanced-button btn-secondary-glow">
+                <a href="#contact" data-cta-type="Start Free Plan" class="mt-2 inline-block text-center btn-secondary-glow">
                     Get Started Free
                 </a>
             </div>
@@ -306,10 +109,10 @@
                             Powered by Global Leader Purple Wi-Fi. We transform your existing infrastructure into real-time, actionable customer intelligence—no hardware replacement needed.
                         </p>
                         <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                            <a href="#contact" data-cta-type="Start Free Plan" class="w-full sm:w-auto enhanced-button btn-secondary-glow text-lg">
+                            <a href="#contact" data-cta-type="Start Free Plan" class="w-full sm:w-auto btn-secondary-glow text-lg">
                                 Start with the Free Connect Plan
                             </a>
-                            <a href="#solution" class="w-full sm:w-auto enhanced-button btn-accent-outline text-lg">
+                            <a href="#solution" class="w-full sm:w-auto btn-accent-outline text-lg">
                                 See How It Works
                             </a>
                         </div>
@@ -464,15 +267,15 @@
                         <h2 class="text-3xl md:text-4xl font-bold mb-4">Choose Your Flow: Licensing Built for Your Business</h2>
                     </div>
                     <div class="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-6">
-                        <div class="perspex-card rounded-xl p-6 flex flex-col hover-lift"><h3 class="text-2xl font-bold mb-2">SMB</h3><p class="text-lg font-bold text-foreground/70 mb-4">Simple & Secure</p><p class="text-foreground/80 flex-grow mb-6">Basic, secure Wi-Fi for small businesses.</p><a href="#contact" data-cta-type="Get Started" class="mt-auto w-full text-center enhanced-button btn-accent-outline">Get Started</a></div>
+                        <div class="perspex-card rounded-xl p-6 flex flex-col hover-lift"><h3 class="text-2xl font-bold mb-2">SMB</h3><p class="text-lg font-bold text-foreground/70 mb-4">Simple & Secure</p><p class="text-foreground/80 flex-grow mb-6">Basic, secure Wi-Fi for small businesses.</p><a href="#contact" data-cta-type="Get Started" class="mt-auto w-full text-center btn-accent-outline">Get Started</a></div>
                         
-                        <div class="perspex-card rounded-xl p-6 flex flex-col border-2 border-accent relative hover-glow-accent"><div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-accent text-background px-4 py-1 rounded-full text-sm font-bold">Free Plan</div><h3 class="text-2xl font-bold mb-2">Connect</h3><p class="text-lg font-bold text-accent mb-4">FREE</p><p class="text-foreground/80 flex-grow mb-6">The essential first step. Secure, branded guest Wi-Fi.</p><a href="#contact" data-cta-type="Start Free Plan" class="mt-auto w-full text-center enhanced-button btn-secondary-glow">Start For Free</a></div>
+                        <div class="perspex-card rounded-xl p-6 flex flex-col border-2 border-accent relative hover-glow-accent"><div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-accent text-background px-4 py-1 rounded-full text-sm font-bold">Free Plan</div><h3 class="text-2xl font-bold mb-2">Connect</h3><p class="text-lg font-bold text-accent mb-4">FREE</p><p class="text-foreground/80 flex-grow mb-6">The essential first step. Secure, branded guest Wi-Fi.</p><a href="#contact" data-cta-type="Start Free Plan" class="mt-auto w-full text-center btn-secondary-glow">Start For Free</a></div>
                         
-                        <div class="perspex-card rounded-xl p-6 flex flex-col hover-lift"><h3 class="text-2xl font-bold mb-2">Capture</h3><p class="text-lg font-bold text-foreground/70 mb-4">Build Your Data</p><p class="text-foreground/80 flex-grow mb-6">Turn visitors into a data asset with ethical capture.</p><a href="#contact" data-cta-type="Get Started" class="mt-auto w-full text-center enhanced-button btn-accent-outline">Get Started</a></div>
+                        <div class="perspex-card rounded-xl p-6 flex flex-col hover-lift"><h3 class="text-2xl font-bold mb-2">Capture</h3><p class="text-lg font-bold text-foreground/70 mb-4">Build Your Data</p><p class="text-foreground/80 flex-grow mb-6">Turn visitors into a data asset with ethical capture.</p><a href="#contact" data-cta-type="Get Started" class="mt-auto w-full text-center btn-accent-outline">Get Started</a></div>
                         
-                        <div class="perspex-card rounded-xl p-6 flex flex-col hover-lift"><h3 class="text-2xl font-bold mb-2">Engage</h3><p class="text-lg font-bold text-foreground/70 mb-4">Automate & Personalize</p><p class="text-foreground/80 flex-grow mb-6">Personalization at scale with logic flows.</p><a href="#contact" data-cta-type="Get Started" class="mt-auto w-full text-center enhanced-button btn-accent-outline">Get Started</a></div>
+                        <div class="perspex-card rounded-xl p-6 flex flex-col hover-lift"><h3 class="text-2xl font-bold mb-2">Engage</h3><p class="text-lg font-bold text-foreground/70 mb-4">Automate & Personalize</p><p class="text-foreground/80 flex-grow mb-6">Personalization at scale with logic flows.</p><a href="#contact" data-cta-type="Get Started" class="mt-auto w-full text-center btn-accent-outline">Get Started</a></div>
                         
-                        <div class="perspex-card rounded-xl p-6 flex flex-col hover-lift"><h3 class="text-2xl font-bold mb-2">Enterprise</h3><p class="text-lg font-bold text-foreground/70 mb-4">Predictive Intelligence</p><p class="text-foreground/80 flex-grow mb-6">Fully managed service with our AI Gateway.</p><a href="#contact" data-cta-type="Request Consultation" class="mt-auto w-full text-center enhanced-button btn-accent-glow">Consultation Required</a></div>
+                        <div class="perspex-card rounded-xl p-6 flex flex-col hover-lift"><h3 class="text-2xl font-bold mb-2">Enterprise</h3><p class="text-lg font-bold text-foreground/70 mb-4">Predictive Intelligence</p><p class="text-foreground/80 flex-grow mb-6">Fully managed service with our AI Gateway.</p><a href="#contact" data-cta-type="Request Consultation" class="mt-auto w-full text-center btn-accent-glow">Consultation Required</a></div>
                     </div>
                     
                     <div class="mt-16">
@@ -539,7 +342,7 @@
                             <div class="cf-turnstile" data-sitekey="0x4AAAAAAB4_3paL9cBdsayD" data-theme="dark"></div>
 
                             <div>
-                                <button id="submit-button" type="submit" class="w-full enhanced-button btn-secondary-glow text-lg">
+                                <button id="submit-button" type="submit" class="w-full btn-secondary-glow text-lg">
                                     Start Your Free Connect Plan
                                 </button>
                             </div>
@@ -588,13 +391,14 @@
                     </div>
                 </div>
                 <div class="mt-8 border-t border-primary/10 pt-8 text-center text-foreground/50">
-                    <p>&copy; 2025 Flow Networks. All Rights Reserved.</p> </div>
+                    <p>&copy; 2025 Flow Networks. All Rights Reserved.</p>
+                </div>
             </div>
         </footer>
     </div>
 
     <script>
-        // Cursor Spotlight Effect (from Design_Guide.md)
+        // Cursor Spotlight Effect
         document.body.addEventListener('mousemove', (e) => {
             document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
             document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
@@ -604,11 +408,9 @@
         const navbar = document.getElementById('navbar');
         window.onscroll = () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-background-secondary/90');
-                navbar.classList.add('border-primary/20');
+                navbar.classList.add('bg-background-secondary/90', 'border-primary/20');
             } else {
-                navbar.classList.remove('bg-background-secondary/90');
-                navbar.classList.remove('border-primary/20');
+                navbar.classList.remove('bg-background-secondary/90', 'border-primary/20');
             }
         };
         
@@ -620,22 +422,19 @@
         });
 
         // Close mobile menu when a link is clicked
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
+        mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                  mobileMenu.classList.add('hidden');
             });
         });
 
-        // --- Updated Dynamic CTA Form Handling ---
+        // --- Dynamic CTA Form Handling ---
         const contactHeading = document.getElementById('contact-heading');
         const contactSubheading = document.getElementById('contact-subheading');
         const submitButton = document.getElementById('submit-button');
         const ctaSourceInput = document.getElementById('cta_source');
         const businessNameField = document.getElementById('business_name_field');
-        // Removed cityField as it wasn't in the new plan, but can be added back.
 
-        // Configurations based on new Content.md
         const ctaConfigs = {
             'default': { 
                 heading: "Don't Just Connect. Understand. Start for Free Today.", 
@@ -674,19 +473,14 @@
             submitButton.textContent = config.buttonText;
             ctaSourceInput.value = config.ctaValue;
             
-            // Hide all optional fields first
             [businessNameField].forEach(field => field.style.display = 'none');
-            // Show fields required for this CTA
             config.showFields.forEach(field => field.style.display = 'block');
         }
         
-        // Add listeners to all CTA buttons
         document.querySelectorAll('a[href="#contact"]').forEach(link => {
             link.addEventListener('click', (e) => {
                 const ctaType = e.currentTarget.dataset.ctaType;
                 updateFormForCTA(ctaType);
-                
-                // Optional: Smooth scroll to the form
                 const contactSection = document.getElementById('contact');
                 if(contactSection) {
                     contactSection.scrollIntoView({ behavior: 'smooth' });

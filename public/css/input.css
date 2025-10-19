@@ -1,0 +1,148 @@
+/* Import Tailwind's base, component, and utility styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define all our CSS variables (from Design_Guide.md) at the base layer */
+@layer base {
+  :root {
+    --primary: 184 100% 25%;  /* Flow Primary Teal */
+    --secondary: 211 98% 48%; /* Flow Action Blue */
+    --accent: 51 100% 50%;    /* Flow Highlight Yellow */
+    --background: 40 56% 4%;  /* Background Dark Primary */
+    --background-secondary: 40 33% 5%;
+    --foreground: 183 100% 94%; /* Text Light */
+
+    /* Transitions */
+    --duration-standard: 300ms;
+    --ease-gentle: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Base Body Styles */
+  body { 
+    @apply bg-background text-foreground antialiased; 
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 { 
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+  }
+
+  /* Cursor Spotlight Effect */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    background: radial-gradient(
+        circle 400px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+        hsla(var(--primary), 0.15),
+        transparent 80%
+    );
+    transition: background 0.1s ease-out;
+  }
+}
+
+/* Define custom components */
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply bg-background/60 border border-primary/20 transition-all duration-300 ease-in-out;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  /* Perspex Card */
+  .perspex-card {
+    @apply bg-background-secondary/75 border border-primary/20 relative overflow-hidden transition-all duration-300 ease-in-out;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+  .hover-lift:hover {
+    @apply -translate-y-1;
+  }
+
+  .hover-glow-primary:hover {
+    @apply shadow-glow-teal border-primary/40;
+  }
+  
+  .hover-glow-accent:hover {
+    @apply shadow-glow-yellow border-accent/50 -translate-y-1;
+  }
+
+  /* Enhanced Button Base */
+  .enhanced-button {
+    @apply transition-all duration-300 ease-in-out relative overflow-hidden font-bold rounded-lg px-6 py-3;
+  }
+
+  /* Button Variants */
+  .btn-secondary-glow {
+    @apply enhanced-button bg-secondary text-white;
+  }
+  .btn-secondary-glow:hover {
+    @apply bg-opacity-90 shadow-glow-blue -translate-y-0.5;
+  }
+
+  .btn-accent-glow {
+    @apply enhanced-button bg-accent text-background;
+  }
+  .btn-accent-glow:hover {
+    @apply bg-opacity-90 shadow-glow-yellow -translate-y-0.5;
+  }
+  
+  .btn-accent-outline {
+    @apply enhanced-button bg-transparent border-2 border-accent text-accent;
+  }
+  .btn-accent-outline:hover {
+    @apply bg-accent text-background shadow-glow-yellow;
+  }
+
+  /* Text Link */
+  .text-link {
+    @apply text-primary transition-colors duration-300 ease-in-out;
+  }
+  .text-link:hover {
+    @apply text-primary/80 underline;
+  }
+  
+  /* Section Glows & Animations */
+  .section-glow-bg {
+    @apply absolute top-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none;
+  }
+  .section-glow-bg .glow-1 {
+    @apply absolute top-[10%] left-[-10%] w-2/5 h-2/5 bg-primary rounded-full opacity-10;
+    filter: blur(100px);
+    animation: pulse 8s infinite alternate;
+  }
+  .section-glow-bg .glow-2 {
+    @apply absolute bottom-[10%] right-[-10%] w-2/5 h-2/5 bg-secondary rounded-full opacity-10;
+    filter: blur(100px);
+    animation: pulse 10s infinite alternate;
+  }
+}
+
+/* Define custom utility animations/classes */
+@layer utilities {
+  .glow-opacity-5 {
+    opacity: 0.05;
+  }
+  .glow-opacity-5-delay-2 {
+    opacity: 0.05;
+    animation-delay: -2s;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.05; }
+  100% { transform: scale(1.1); opacity: 0.1; }
+}
