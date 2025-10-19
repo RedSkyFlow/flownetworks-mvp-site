@@ -792,31 +792,33 @@ body::before {
   overflow: hidden;
 }
 
+/* --- FIX: Removed @apply and used direct CSS --- */
+
 .section-glow-bg .glow-1 {
   position: absolute;
   top: 10%;
   left: -10%;
-  height: 40%;
   width: 40%;
+  height: 40%;
+  background-color: hsl(var(--primary));
   border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--primary) / var(--tw-bg-opacity));
+  /* rounded-full */
   filter: blur(100px);
-  /* --- FIX: Applied animation directly --- */
   animation: float 12s infinite alternate ease-in-out;
 }
+
+/* --- FIX: Removed @apply and used direct CSS --- */
 
 .section-glow-bg .glow-2 {
   position: absolute;
   bottom: 10%;
   right: -10%;
-  height: 40%;
   width: 40%;
+  height: 40%;
+  background-color: hsl(var(--secondary));
   border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--secondary) / var(--tw-bg-opacity));
+  /* rounded-full */
   filter: blur(100px);
-  /* --- FIX: Applied animation directly --- */
   animation: float 10s infinite alternate ease-in-out -4s;
 }
 
@@ -1623,30 +1625,34 @@ body::before {
   transition-duration: 300ms;
 }
 
+/* --- FIX: Defined @keyframes at the top --- */
+
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.15;
+    /* Increased opacity */
+  }
+
+  50% {
+    transform: translate(40px, 20px) scale(1.1);
+    /* Increased movement */
+    opacity: 0.2;
+    /* Increased opacity */
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.15;
+    /* Increased opacity */
+  }
+}
+
 /* Define all our CSS variables (from Brand Guide) at the base layer */
 
 /* Define custom components */
 
 /* Define custom utility animations/classes */
-
-/* --- FIX: Added @keyframes directly to the CSS --- */
-
-@keyframes float {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.08;
-  }
-
-  50% {
-    transform: translate(20px, 15px) scale(1.1);
-    opacity: 0.12;
-  }
-
-  100% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.08;
-  }
-}
 
 .hover\:text-accent:hover {
   --tw-text-opacity: 1;
