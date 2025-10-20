@@ -6,6 +6,7 @@
 
 /* REPLACE your existing body::before with this TUNED version: 
 */
+/* Cursor Spotlight Effect */
 body::before {
   content: '';
   position: fixed;
@@ -15,16 +16,16 @@ body::before {
   height: 100%;
   pointer-events: none;
   z-index: 60; /* keep above background but under interactive UI */
-  
-  /* Tuned sizes and opacity */
+
+  /* --- NEW 20% VALUES --- */
   background: radial-gradient(
-    circle 420px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    circle 440px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
     hsla(var(--primary), 0.22) 0%,
     hsla(var(--primary), 0.15) 35%,
     hsla(var(--primary), 0.05) 60%,
     transparent 80%
   ), radial-gradient(
-    circle 260px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    circle 320px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
     hsla(var(--secondary), 0.10) 0%,
     transparent 55%
   );
