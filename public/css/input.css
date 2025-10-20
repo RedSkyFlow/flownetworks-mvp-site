@@ -1,244 +1,46 @@
-/* Import Tailwind's base, component, and utility styles */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* --- FIX: Defined @keyframes at the top --- */
-@keyframes float {
-  0% { 
-    transform: translate(0px, 0px) scale(1); 
-    opacity: 0.15; /* Increased opacity */
-  }
-  50% { 
-    transform: translate(40px, 20px) scale(1.1); /* Increased movement */
-    opacity: 0.2; /* Increased opacity */
-  }
-  100% { 
-    transform: translate(0px, 0px) scale(1); 
-    opacity: 0.15; /* Increased opacity */
-  }
+/* DELETE this entire rule:
+*/
+#debug-spotlight {
+  /* ...all content... */
 }
 
-
-/* Define all our CSS variables (from Brand Guide) at the base layer */
-@layer base {
-  :root {
-    /* CORRECTED HSL Values from Brand and Colour Palette Guide */
-    --primary: 176 83% 46%;   /* #14D8CC */
-    --secondary: 205 100% 51%;  /* #0496FF */
-    --accent: 40 100% 64%;     /* #FFC145 */
-    --background: 233 36% 17%;  /* #1c203c */
-    --foreground: 290 25% 95%;  /* #F5F0F6 */
-    
-    /* Derived secondary background for section separation */
-    --background-secondary: 233 30% 22%; /* A slightly lighter/desaturated #1c203c */
-
-    /* Transitions */
-    --duration-standard: 300ms;
-    --ease-gentle: cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* Glows */
-    --glow-teal: 0 0 15px hsla(var(--primary), 0.5), 0 0 30px hsla(var(--primary), 0.3);
-    --glow-blue: 0 0 20px hsla(var(--secondary), 0.6);
-    --glow-yellow: 0 0 20px hsla(var(--accent), 0.5);
-  }
-
-  /* Base Body Styles */
-  body { 
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    @apply antialiased;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  h1, h2, h3, h4, h5, h6 { 
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-  }
-
-  /* Cursor Spotlight Effect */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  z-index: 60; /* keep above background but under interactive UI */
-  /* stronger, larger spotlight for testing */
-  background: radial-gradient(
-    circle 700px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
-    hsla(var(--primary), 0.45) 0%,
-    hsla(var(--primary), 0.28) 35%,
-    hsla(var(--primary), 0.12) 60%,
-    transparent 85%
-  ), radial-gradient(
-    circle 420px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
-    hsla(var(--secondary), 0.18) 0%,
-    transparent 60%
-  );
-  transition: background 0.06s linear;
-  }
-}
-
-/* Define custom components */
-@layer components {
-  /* Glassmorphism Card */
-  .glass-card {
-    background-color: hsl(var(--background) / 0.6);
-    border: 1px solid hsl(var(--primary) / 0.2);
-    transition: all 300ms var(--ease-gentle);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-  }
-
-  /* Perspex Card */
-  .perspex-card {
-    background-color: hsl(var(--background-secondary) / 0.75);
-    border: 1px solid hsl(var(--primary) / 0.2);
-    position: relative; 
-    overflow: hidden;
-    transition: all 300ms var(--ease-gentle);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-  }
-
-  /* Hover Effects */
-  .hover-lift {
-    @apply transition-transform duration-300 ease-in-out;
-  }
-  .hover-lift:hover {
-    @apply -translate-y-1;
-  }
-
-  .hover-glow-primary:hover {
-    @apply shadow-glow-teal border-primary/40;
-  }
-  
-  .hover-glow-accent:hover {
-    @apply shadow-glow-yellow border-accent/50 -translate-y-1;
-  }
-
-  /* Enhanced Button Base */
-  .enhanced-button {
-    @apply transition-all duration-300 ease-in-out relative overflow-hidden font-bold rounded-lg px-6 py-3;
-  }
-
-  /* Button Variants */
-  .btn-secondary-glow {
-    @apply enhanced-button bg-secondary text-white;
-  }
-  .btn-secondary-glow:hover {
-    @apply bg-opacity-90 shadow-glow-blue -translate-y-0.5;
-  }
-
-  .btn-accent-glow {
-    @apply enhanced-button;
-    background-color: hsl(var(--accent));
-    color: hsl(var(--background));
-  }
-  .btn-accent-glow:hover {
-    @apply bg-opacity-90 shadow-glow-yellow -translate-y-0.5;
-  }
-  
-  .btn-accent-outline {
-    @apply enhanced-button bg-transparent border-2 border-accent text-accent;
-  }
-  .btn-accent-outline:hover {
-    background-color: hsl(var(--accent));
-    color: hsl(var(--background));
-    @apply shadow-glow-yellow;
-  }
-
-  /* Text Link */
-  .text-link {
-    @apply text-primary transition-colors duration-300 ease-in-out;
-  }
-  .text-link:hover {
-    @apply text-primary/80 underline;
-  }
-  
-  /* Section Glows & Animations */
-  .section-glow-bg {
-    @apply absolute top-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none;
-  }
-
-  /* --- FIX: Removed @apply and used direct CSS --- */
-  .section-glow-bg .glow-1 {
-    position: absolute;
-    top: 5%;
-    left: -15%;
-    width: 52%;
-    height: 52%;
-    background-color: hsla(var(--primary), 0.28);
-    border-radius: 9999px; /* rounded-full */
-    filter: blur(160px);
-    mix-blend-mode: screen;
-    box-shadow: 0 0 80px hsla(var(--primary), 0.45);
-    opacity: 0.9;
-    animation: float 10s infinite alternate ease-in-out;
-  }
-  
-  /* --- FIX: Removed @apply and used direct CSS --- */
-  .section-glow-bg .glow-2 {
-    position: absolute;
-    bottom: 5%;
-    right: -15%;
-    width: 52%;
-    height: 52%;
-    background-color: hsla(var(--secondary), 0.26);
-    border-radius: 9999px; /* rounded-full */
-    filter: blur(160px);
-    mix-blend-mode: screen;
-    box-shadow: 0 0 90px hsla(var(--secondary), 0.45);
-    opacity: 0.9;
-    animation: float 9s infinite alternate ease-in-out -3s;
-  }
-
-  /* Temporary visible debug spotlight (very obvious during tests)
-     Will be toggled by `public/script.js`. Remove after verification. */
-  #debug-spotlight {
-    position: fixed;
-    width: 780px;
-    height: 780px;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    left: var(--mouse-x, 50%);
-    top: var(--mouse-y, 50%);
-    background: radial-gradient(circle at center,
-      rgba(20,216,204,0.75) 0%, rgba(20,216,204,0.45) 28%, rgba(4,150,255,0.18) 45%, transparent 60%);
-    mix-blend-mode: screen;
-    filter: blur(28px);
-    z-index: 99999;
-    transition: opacity 0.08s linear, left 0.06s linear, top 0.06s linear;
-    opacity: 0.95;
-    display: none; /* shown by script when pointer active */
-  }
-}
-
-/* Define custom utility animations/classes */
-@layer utilities {
-  .shadow-glow-teal {
-    box-shadow: 0 0 15px hsla(var(--primary), 0.5), 0 0 30px hsla(var(--primary), 0.3);
-  }
-  .shadow-glow-yellow {
-    box-shadow: 0 0 20px hsla(var(--accent), 0.5);
-  }
-  .shadow-glow-blue {
-    box-shadow: 0 0 20px hsla(var(--secondary), 0.6);
-  }
-}
-
-/* Particle canvas sits behind content but above background image */
-#particle-canvas {
+/* REPLACE your existing body::before with this TUNED version: 
+*/
+body::before {
+  content: '';
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 5; /* behind UI (z-10 content) but above background (-z-10) */
+  z-index: 60; /* keep above background but under interactive UI */
+  
+  /* Tuned sizes and opacity */
+  background: radial-gradient(
+    circle 420px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    hsla(var(--primary), 0.22) 0%,
+    hsla(var(--primary), 0.15) 35%,
+    hsla(var(--primary), 0.05) 60%,
+    transparent 80%
+  ), radial-gradient(
+    circle 260px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    hsla(var(--secondary), 0.10) 0%,
+    transparent 55%
+  );
+  transition: background 0.06s linear;
+}
+
+/* REPLACE your existing #particle-canvas with this TUNED version: 
+*/
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.28;
   mix-blend-mode: screen;
-  opacity: 0.6;
 }
