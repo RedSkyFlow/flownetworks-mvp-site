@@ -1,12 +1,6 @@
-/* Import Tailwind's base, component, and utility styles */
-
-/* ! tailwindcss v3.3.4 | MIT License | https://tailwindcss.com */
-
-/*
-1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
-2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
-*/
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 *,
 ::before,
 ::after {
@@ -487,13 +481,13 @@ body::before {
   /* keep above background but under interactive UI */
   /* stronger, larger spotlight for testing */
   background: radial-gradient(
-    circle 700px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    circle 240px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
     hsla(var(--primary), 0.45) 0%,
     hsla(var(--primary), 0.28) 35%,
     hsla(var(--primary), 0.12) 60%,
     transparent 85%
   ), radial-gradient(
-    circle 420px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    circle 240px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
     hsla(var(--secondary), 0.18) 0%,
     transparent 60%
   );
@@ -836,20 +830,18 @@ body::before {
   animation: float 9s infinite alternate ease-in-out -3s;
 }
 
-/* Temporary visible debug spotlight (very obvious during tests)
-     Will be toggled by `public/script.js`. Remove after verification. */
 
-#debug-spotlight {
+/* #debug-spotlight {
   position: fixed;
-  width: 780px;
-  height: 780px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
   left: var(--mouse-x, 50%);
   top: var(--mouse-y, 50%);
   background: radial-gradient(circle at center,
-      rgba(20,216,204,0.75) 0%, rgba(20,216,204,0.45) 28%, rgba(4,150,255,0.18) 45%, transparent 60%);
+      rgba(20,216,204,0.75) 0%, rgba(20,216,204,0.45) 28%, rgba(4,150,255,0.18) 45%, transparent 80%);
   mix-blend-mode: screen;
   filter: blur(28px);
   z-index: 99999;
@@ -857,7 +849,7 @@ body::before {
   opacity: 0.95;
   display: none;
   /* shown by script when pointer active */
-}
+
 
 .sr-only {
   position: absolute;

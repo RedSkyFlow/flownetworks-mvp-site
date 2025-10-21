@@ -1,11 +1,4 @@
-/* DELETE this entire rule:
-*/
-#debug-spotlight {
-  /* ...all content... */
-}
 
-/* REPLACE your existing body::before with this TUNED version: 
-*/
 /* Cursor Spotlight Effect */
 body::before {
   content: '';
@@ -19,13 +12,13 @@ body::before {
 
   /* --- NEW 20% VALUES --- */
   background: radial-gradient(
-    circle 440px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    circle 240px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
     hsla(var(--primary), 0.22) 0%,
     hsla(var(--primary), 0.15) 35%,
     hsla(var(--primary), 0.05) 60%,
     transparent 80%
   ), radial-gradient(
-    circle 320px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    circle 280px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
     hsla(var(--secondary), 0.10) 0%,
     transparent 55%
   );
